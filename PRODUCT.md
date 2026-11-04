@@ -29,7 +29,7 @@ Conversion is WhatsApp only: (77) 99154-8089. No form. Address: Rua Clara Akama,
 ## Capabilities and Constraints
 
 - Services: irrigation reservoirs, water canals, fish tanks, settling/tailings ponds, grain-warehouse lining, ornamental lakes and concrete tanks.
-- Differentiators: IAGI CWT, Nortène accreditation, field crew, own test equipment (thickness, air, tensile), on-call crew, diving assistance without emptying the reservoir.
+- Differentiators: IAGI CWT, field crew, own test equipment (thickness, air, tensile), on-call crew, diving assistance without emptying the reservoir.
 - Open (ask Wilton): warranty terms, whether Geomon does earthworks, opening hours, CNPJ.
 
 ## Brand Commitments
@@ -40,7 +40,7 @@ Conversion is WhatsApp only: (77) 99154-8089. No form. Address: Rua Clara Akama,
 
 ## Evidence on Hand
 
-- +25 million m² installed; since 2019; IAGI CWT ("a única empresa brasileira focada no agro" with it, as Geomon's own PDF states; publish as is, confirm with Wilton before going live); Nortène accredited installer.
+- +25 million m² installed; since 2019; IAGI CWT ("a única empresa brasileira focada no agro" with it, as Geomon's own PDF states; publish as is, confirm with Wilton before going live).
 - Client logos from Geomon's PDF: INPASA, SLC, Franciosi, GEES S/A, Horizonte Agrícola, HS Construções e Terraplenagem (publish as in the PDF).
 - Real photos and video in `../0100 - Geomon/MATERIAL/` and `anexo ChatGPT*/`; hero drone video generated in Google Flow from the real reservoir photo (`../0100 - Geomon/video-hero/`).
 - No testimonials yet. Never fabricate people, works or quotes: the people and works drawn in the mockups are AI-generated and must be replaced by real material.

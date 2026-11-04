@@ -109,7 +109,6 @@ await variantes('cwt-fundo', `${A}/18 - resultado ChatGPT fundo CWT.png`, [768, 
 // selo CWT em 3D: o selo real (4 no anexo) refeito como medalha no ChatGPT, textos conferidos letra
 // por letra (19 no anexo, já veio transparente; insumos/selo-cwt-3d.png é ele sem a sobra)
 await variantes('selo-cwt', 'insumos/selo-cwt-3d.png', [240, 480], { dourado: false, alfa: true })
-await variantes('selo-nortene', 'insumos/selo-nortene.png', [160, 320], { dourado: false, alfa: true })
 // diferenciais: o fundo é a maleta verde do medidor desfocada, sem a mão e sem o aparelho, em
 // 16:9 (ChatGPT a partir da foto real, 21 no anexo), escura à direita, onde fica o texto. O medidor
 // vem recortado por cima pra entrar animado: refeito no ChatGPT com a mão pela esquerda e o visor

@@ -17,7 +17,6 @@
 .cwt .titulo { margin-top: 40px; font-size: 80px; line-height: 1.02; letter-spacing: -.035em; }
 .cwt__unica { display: flex; align-items: flex-start; gap: 22px; margin-top: 44px; max-width: 18.5em; font-size: 25px; font-weight: 500; line-height: 1.38; letter-spacing: -.01em; }
 .cwt__check { flex: none; display: grid; place-items: center; width: 58px; height: 58px; margin-top: 2px; border-radius: 12px; background: var(--verde); color: #04241A; font-size: 28px; }
-.cwt__nortene { margin-top: 36px; font-size: 21px; color: rgb(255 255 255 / .72); }
 .cwt .botoes { margin-top: 48px; }
 .cwt .botao { min-height: 62px; padding: 0 34px; font-size: 19px; }
 
@@ -58,7 +57,6 @@
   .cwt__foto { aspect-ratio: 1; }
   .cwt__unica { gap: 16PX; margin-top: 30PX; font-size: 19PX; }
   .cwt__check { width: 44PX; height: 44PX; border-radius: 10PX; font-size: 21PX; }
-  .cwt__nortene { margin-top: 24PX; font-size: 17PX; }
   .cwt .botoes { margin-top: 34PX; }
   .cwt .botao { min-height: 56PX; font-size: 17PX; flex: 1 1 100%; }
 }

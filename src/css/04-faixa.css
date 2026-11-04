@@ -7,7 +7,7 @@
 /* a seção de cima guarda o espaço que a faixa cobre */
 .secao:has(+ .faixa) { padding-bottom: calc(96px + var(--raio)); }
 .faixa__trilho { display: flex; width: max-content; animation: faixa 52s linear infinite; }
-.faixa__grupo { flex: none; display: flex; align-items: center; }
+.faixa__grupo { flex: none; display: flex; justify-content: space-around; align-items: center; min-width: 100vw; }
 .faixa__grupo li { display: flex; align-items: center; gap: 12px; font-size: 19px; font-weight: 700; letter-spacing: -.01em; white-space: nowrap; }
 .faixa__grupo li::after { content: ''; width: 6px; height: 6px; margin: 0 30px 0 18px; border-radius: 50%; background: rgb(255 255 255 / .35); }
 .faixa .i { font-size: 26px; color: var(--verde); }

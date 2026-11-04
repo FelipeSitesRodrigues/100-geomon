@@ -50,6 +50,7 @@
 .dif__seta { display: block; font-size: 36px; color: #fff; margin-bottom: 14px; }
 .diferenciais .titulo { margin-top: 18px; font-size: 54px; line-height: 1.04; letter-spacing: -.035em; }
 .lista-dif { display: grid; grid-template-columns: 1fr 1fr; column-gap: 28px; margin: 28px 0 32px; }
+.lista-dif > li:last-child { grid-column: 1 / -1; }
 .lista-dif li { position: relative; padding: 14px 0 14px 26px; border-bottom: 1px solid rgb(255 255 255 / .16); }
 .lista-dif li::before { content: ''; position: absolute; left: 0; top: 22px; width: 10px; height: 10px; border-radius: 50%; background: var(--verde); box-shadow: 0 0 0 4px rgb(74 222 110 / .16); }
 .lista-dif h3 { font-size: 21px; letter-spacing: -.015em; }
