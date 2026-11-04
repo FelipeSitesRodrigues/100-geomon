@@ -648,5 +648,15 @@
   "w": 540,
   "h": 960,
   "kb": 75
+ },
+ "hero-capa-celular-440.avif": {
+  "w": 440,
+  "h": 720,
+  "kb": 13
+ },
+ "hero-capa-celular-440.webp": {
+  "w": 440,
+  "h": 720,
+  "kb": 17
  }
 }

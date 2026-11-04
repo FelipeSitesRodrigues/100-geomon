@@ -8,7 +8,7 @@
   const conexao = navigator.connection || {}
   if (matchMedia('(prefers-reduced-motion: reduce)').matches || conexao.saveData || /2g/.test(conexao.effectiveType || '')) return
   const iniciar = () => {
-    video.src = matchMedia('(max-width: 900px)').matches ? video.dataset.srcPequeno : video.dataset.srcGrande
+    video.src = matchMedia('(max-width: 47.99em)').matches ? video.dataset.srcCelular : matchMedia('(max-width: 900px)').matches ? video.dataset.srcPequeno : video.dataset.srcGrande
     video.addEventListener('playing', () => video.classList.add('tocando'), { once: true })
     const tentar = () => video.play().catch(() => {})
     video.addEventListener('canplay', tentar, { once: true })

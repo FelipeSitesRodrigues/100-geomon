@@ -3,7 +3,9 @@
 // quadro é o primeiro e o loop não tem corte. Sem áudio. Cor etiquetada em BT.709 no arquivo,
 // e a capa sai do próprio vídeo codificado, pelo mesmo caminho de cor que o Chrome usa, pra a
 // troca capa → vídeo não mudar de tom (memória cor-video-bt601-chrome).
-// Uso: node scripts/video-hero.mjs → src/assets/video/hero-{1280,854}.mp4 e insumos/quadros/hero-capa.png
+// No celular o vídeo é o fundo do hero inteiro, em pé: sai um recorte próprio em volta do reservatório,
+// sem reduzir (a origem só tem 720 de altura), que também pesa menos que o quadro largo.
+// Uso: node scripts/video-hero.mjs → src/assets/video/hero-{1280,854,celular}.mp4 e insumos/quadros/hero-capa{,-celular}.png
 import { execFileSync } from 'node:child_process'
 import { mkdirSync } from 'node:fs'
 const ORIGEM = '../0100 - Geomon/video-hero/VIDEO HERO.mp4'
@@ -16,5 +18,11 @@ for (const [w, crf] of [[1280, 28], [854, 29]]) {
     '-map', '[v]', '-an', '-c:v', 'libx264', '-preset', 'veryslow', '-crf', String(crf), '-profile:v', 'high', '-pix_fmt', 'yuv420p',
     ...cor, '-movflags', '+faststart', `src/assets/video/hero-${w}.mp4`)
 }
-ff('-i', 'src/assets/video/hero-1280.mp4', '-frames:v', '1', '-vf', 'scale=in_color_matrix=bt709:flags=accurate_rnd+full_chroma_int', 'insumos/quadros/hero-capa.png')
+ff('-i', ORIGEM, '-filter_complex',
+  `[0:v]trim=start=0.04,setpts=PTS-STARTPTS,crop=440:720:540:0,scale=out_color_matrix=bt709,format=yuv420p,split[a][b];[b]reverse,trim=start_frame=1,setpts=PTS-STARTPTS[r];[a][r]concat=n=2:v=1:a=0[v]`,
+  '-map', '[v]', '-an', '-c:v', 'libx264', '-preset', 'veryslow', '-crf', '27', '-profile:v', 'high', '-pix_fmt', 'yuv420p',
+  ...cor, '-movflags', '+faststart', 'src/assets/video/hero-celular.mp4')
+for (const [video, capa] of [['hero-1280', 'hero-capa'], ['hero-celular', 'hero-capa-celular']]) {
+  ff('-i', `src/assets/video/${video}.mp4`, '-frames:v', '1', '-vf', 'scale=in_color_matrix=bt709:flags=accurate_rnd+full_chroma_int', `insumos/quadros/${capa}.png`)
+}
 console.log('ok')

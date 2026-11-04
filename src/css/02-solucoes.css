@@ -2,7 +2,7 @@
    Seção branca logo depois do hero. Três cartões em pé (4:5): a foto ocupa o cartão inteiro e,
    embaixo, um vidro escuro (desfoque que cresce pra baixo e escurece) segura o rótulo, o título
    em caixa alta e o texto. A seta fica num botão de vidro no canto. O cartão inteiro abre o
-   WhatsApp do serviço. No celular e no tablet, os cartões correm de lado.                    */
+   WhatsApp do serviço. No tablet os cartões correm de lado; no celular, um embaixo do outro.  */
 .solucoes { overflow: hidden; isolation: isolate; }
 .solucoes__arcos { width: 820px; right: -300px; top: -360px; z-index: -1; }
 @media (min-width: 75em) {
@@ -101,7 +101,7 @@
   .js .cartoes > [data-revela='grade']:not(.visivel) { transform: translate3d(0, 70px, 0); }
 }
 @media (max-width: 47.99em) {
-  .cartoes { margin-top: 32PX; }
+  .cartoes { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14PX; margin: 32PX 0 0; padding: 0; overflow: visible; scroll-snap-type: none; }
   .cartao__seta { right: 14PX; top: 14PX; width: 42PX; height: 42PX; }
   .tambem { flex-direction: column; align-items: flex-start; gap: 14PX; padding: 22PX; }
   .tambem__rotulo { padding-right: 0; border-right: 0; }

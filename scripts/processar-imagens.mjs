@@ -68,6 +68,7 @@ async function variantes(nome, origem, larguras, op = {}) {
 // ---------------------------------------------------------------- hero
 // capas dos vídeos do hero e do CTA (1º quadro de cada um, já no tom do vídeo; video-cta.mjs)
 await variantes('hero-capa', `${Q}/hero-capa.png`, [854, 1280], { dourado: false })
+await variantes('hero-capa-celular', `${Q}/hero-capa-celular.png`, [440], { dourado: false })
 await variantes('cta', `${Q}/cta-capa.png`, [854, 1280, 1600], { dourado: false })
 await variantes('cta-celular', `${Q}/cta-capa-celular.png`, [540], { dourado: false })
 

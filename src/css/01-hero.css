@@ -38,6 +38,7 @@
 .prova { display: flex; align-items: center; gap: 18px; padding: 0 28px; }
 .prova:first-child { padding-left: 0; }
 .prova + .prova { border-left: 1px solid rgb(255 255 255 / .2); }
+.prova--copia { display: none; }
 .prova__icone { font-size: 46px; color: var(--verde); }
 .prova picture { flex: none; width: 52px; }
 .prova__selo { width: 52px; }
@@ -59,29 +60,39 @@
 }
 
 /* ---------------------------------------------------------------- celular
-   título → vídeo → texto → botões → provas. O vídeo vira um bloco de cantos arredondados. */
+   O vídeo em pé é o fundo do hero inteiro: título no céu, o reservatório aparece na janela do
+   meio (a ordem título, vídeo, texto, botões continua) e o escurecimento segura o texto de baixo.
+   As provas passam numa fita contínua, sem parar, pra não alongar a rolagem: 4 cartões + 4 cópias
+   e translate de -50%; cada cartão leva a sua margem, senão o loop dá um salto. O hero corta a sobra.
+   Com movimento reduzido a fita para e vira um trilho de arrastar com o dedo. */
 @media (max-width: 47.99em) {
   .hero {
-    min-height: 0;
-    padding: 96PX 0 calc(48PX + var(--raio));
-    grid-template-rows: none;
+    min-height: max(100svh, 860PX);
+    padding: 96PX 0 calc(28PX + var(--raio));
+    grid-template-rows: auto auto minmax(170PX, 1fr) auto auto auto;
     grid-template-columns: 20PX minmax(0, 1fr) 20PX;
-    grid-template-areas: '. etiqueta .' '. titulo .' 'midia midia midia' '. texto .' '. botoes .' '. provas .';
-    background: radial-gradient(120% 60% at 80% 0%, #0b3b37 0%, var(--petroleo) 55%, var(--preto) 100%);
+    grid-template-areas: '. etiqueta .' '. titulo .' '. . .' '. texto .' '. botoes .' 'provas provas provas';
   }
-  .hero::before { display: none; }
+  .hero::before {
+    background: linear-gradient(180deg, rgb(4 14 13 / .74) 0%, rgb(4 14 13 / .62) 30%, rgb(4 14 13 / 0) 45%, rgb(4 14 13 / 0) 54%, rgb(5 7 7 / .8) 66%, rgb(5 7 7 / .94) 80%, var(--preto) 100%);
+  }
   .hero__conteudo { display: contents; }
   .hero__etiqueta { grid-area: etiqueta; justify-self: start; }
-  .hero__titulo { grid-area: titulo; margin: 18PX 0 22PX; font-size: clamp(36PX, 10.4vw, 46PX); }
-  .hero__midia { grid-area: midia; position: relative; inset: auto; z-index: 0; margin: 0 12PX; aspect-ratio: 4 / 3; border-radius: 22PX; overflow: hidden; box-shadow: 0 24PX 50PX -24PX rgb(0 0 0 / .7); }
+  .hero__titulo { grid-area: titulo; margin: 18PX 0 0; font-size: clamp(36PX, 10.4vw, 46PX); }
   .hero__capa, .hero__capa img, .hero__video { object-position: 50% 50%; }
-  .hero__texto { grid-area: texto; margin-top: 24PX; font-size: 16.5PX; }
-  .hero__botoes { grid-area: botoes; margin-top: 26PX; }
+  .hero__texto { grid-area: texto; font-size: 16.5PX; }
+  .hero__botoes { grid-area: botoes; margin-top: 22PX; }
   .hero__botoes .botao { flex: 1 1 auto; }
-  .provas { grid-area: provas; width: auto; grid-template-columns: 1fr; margin-top: 40PX; padding-top: 6PX; row-gap: 0; }
-  .prova, .prova:first-child, .prova:nth-child(3), .prova + .prova { padding: 16PX 0; border-left: 0; }
-  .prova + .prova { border-top: 1px solid rgb(255 255 255 / .12); }
-  .prova__icone { font-size: 38PX; }
-  .prova picture, .prova__selo { width: 42PX; }
-  .prova strong { font-size: 21PX; }
+  .provas { grid-area: provas; display: flex; justify-self: start; width: max-content; max-width: none; margin: 26PX 0 0; padding: 0; border-top: 0; animation: provas 32s linear infinite; }
+  .prova--copia { display: flex; }
+  .prova, .prova:first-child, .prova:nth-child(3), .prova + .prova { flex: none; width: 272PX; margin-right: 10PX; gap: 14PX; padding: 14PX 16PX; border: 0; border-radius: 18PX; background: rgb(255 255 255 / .07); box-shadow: inset 0 0 0 1px rgb(255 255 255 / .13); }
+  .prova__icone { flex: none; font-size: 34PX; }
+  .prova picture, .prova__selo { width: 38PX; }
+  .prova strong { font-size: 19PX; }
+  .prova span:not(.prova__pulo):not([data-conta]) { font-size: 13PX; }
+  @keyframes provas { to { transform: translate3d(-50%, 0, 0); } }
+  @media (prefers-reduced-motion: reduce) {
+    .provas { width: auto; justify-self: stretch; padding: 0 20PX; animation: none; overflow-x: auto; scrollbar-width: none; }
+    .prova--copia { display: none; }
+  }
 }

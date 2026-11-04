@@ -21,7 +21,8 @@
  *   peso "marca" pega src/svg/<nome>.svg.
  * - <img data-img="nome" sizes="..." alt="..."> vira <picture> com AVIF e WebP em srcset, a
  *   partir de src/assets/img/manifesto.json (npm run imagens). data-preload gera o preload.
- *   data-img-max limita o src de reserva; data-picture põe classe no <picture>.
+ *   data-img-max limita o src de reserva; data-picture põe classe no <picture>;
+ *   data-celular="nome" troca a imagem até 47.99em (o preload acompanha).
  * - <!-- @schema --> recebe o JSON-LD (GeneralContractor com área atendida e FAQPage).
  * - Avisa: travessão no texto, img sem alt/width/height, id repetido, âncora sem destino,
  *   marcador que sobrou, CSS com chave desbalanceada e mais de um h1.
@@ -195,7 +196,8 @@ function imagens(html) {
     const max = Number(attr(attrs, 'data-img-max') || Infinity)
     const classePicture = attr(attrs, 'data-picture')
     const preload = temAttr(attrs, 'data-preload')
-    attrs = semAttr(attrs, 'data-img-max', 'data-picture', 'data-preload', 'sizes')
+    const celular = attr(attrs, 'data-celular')
+    attrs = semAttr(attrs, 'data-img-max', 'data-picture', 'data-preload', 'data-celular', 'sizes')
     const vw = versoes(nome, 'webp')
     const va = versoes(nome, 'avif')
     if (!vw.length) {
@@ -203,12 +205,18 @@ function imagens(html) {
       return tag.replace(/\sdata-img="[\w-]+"/, ' src="data:," width="16" height="9"')
     }
     const fontes = []
+    const MEDIA_CELULAR = '(max-width: 47.99em)'
+    if (celular) {
+      const ca = versoes(celular, 'avif')
+      fontes.push(`<source media="${MEDIA_CELULAR}" type="image/avif" srcset="${srcset(ca)}" sizes="100vw">`, `<source media="${MEDIA_CELULAR}" type="image/webp" srcset="${srcset(versoes(celular, 'webp'))}" sizes="100vw">`)
+      if (preload) preloads.push(`<link rel="preload" as="image" media="${MEDIA_CELULAR}" type="image/avif" imagesrcset="${srcset(ca)}" imagesizes="100vw" fetchpriority="high">`)
+    }
     if (va.length) fontes.push(`<source type="image/avif" srcset="${srcset(va)}" sizes="${sizes}">`)
     const principal = [...vw].reverse().find((v) => v.w <= max) || vw[0]
     const img = `<img src="/assets/img/${principal.arq}" srcset="${srcset(vw)}" sizes="${sizes}" width="${principal.m.w}" height="${principal.m.h}"${attrs}>`
     if (preload) {
       const lista = va.length ? va : vw
-      preloads.push(`<link rel="preload" as="image" type="image/${va.length ? 'avif' : 'webp'}" imagesrcset="${srcset(lista)}" imagesizes="${sizes}" fetchpriority="high">`)
+      preloads.push(`<link rel="preload" as="image"${celular ? ' media="(min-width: 48em)"' : ''} type="image/${va.length ? 'avif' : 'webp'}" imagesrcset="${srcset(lista)}" imagesizes="${sizes}" fetchpriority="high">`)
     }
     return `<picture${classePicture ? ` class="${classePicture}"` : ''}>${fontes.join('')}${img}</picture>`
   })

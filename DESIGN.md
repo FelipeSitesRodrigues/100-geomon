@@ -109,7 +109,7 @@ Escala: acima de 1200 px o rem acompanha a largura e a altura da janela, o que f
 
 Conteúdo em 1240 px (`.caixa`), seções com 96 px de respiro vertical (80 no tablet, 64 no celular). Seção de conteúdo fica perto de 1 tela em 1440x900; as de foto grande (empresa, obras, processo) até 1,4. Cabeça de seção em duas colunas: título à esquerda, texto curto à direita com fio vertical. Pontos de quebra: 75em (tablet), 64em (processo vira lista vertical), 48em (celular).
 
-Hero no celular segue a regra da casa: título, vídeo, texto, botões, provas.
+Hero no celular: o vídeo em pé é o fundo da seção inteira. Título no céu, reservatório na janela do meio, texto e botões embaixo, sobre o escurecimento, e as provas numa fita contínua que passa sem parar.
 
 ## Elevation & Depth
 

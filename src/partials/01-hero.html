@@ -2,8 +2,8 @@
   <!-- vídeo de drone em órbita (Google Flow, a partir da foto real). A capa é o 1º quadro e o
        LCP; o vídeo só carrega depois que ela pinta (01-hero.js) -->
   <div class="hero__midia">
-    <img class="hero__capa" data-img="hero-capa" data-preload sizes="(min-width: 48em) 100vw, 92vw" alt="Reservatório circular de irrigação revestido com geomembrana pela Geomon, cheio de água, visto de drone ao entardecer no oeste da Bahia" fetchpriority="high" decoding="async">
-    <video class="hero__video" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" data-src-grande="/assets/video/hero-1280.mp4" data-src-pequeno="/assets/video/hero-854.mp4"></video>
+    <img class="hero__capa" data-img="hero-capa" data-celular="hero-capa-celular" data-preload sizes="100vw" alt="Reservatório circular de irrigação revestido com geomembrana pela Geomon, cheio de água, visto de drone ao entardecer no oeste da Bahia" fetchpriority="high" decoding="async">
+    <video class="hero__video" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" data-src-grande="/assets/video/hero-1280.mp4" data-src-pequeno="/assets/video/hero-854.mp4" data-src-celular="/assets/video/hero-celular.mp4"></video>
   </div>
 
   <div class="hero__conteudo caixa">
@@ -32,6 +32,23 @@
     <li class="prova anim-hero-texto" style="--atraso:1.15s">
       <i data-i="map-trifold" data-w="light" class="prova__icone"></i>
       <div><strong><span class="prova__pulo">4</span> estados</strong><span>Maranhão, Tocantins, Piauí e Bahia</span></div>
+    </li>
+    <!-- cópias das 4 provas: só no celular, pra fita contínua fechar o loop -->
+    <li class="prova prova--copia" aria-hidden="true">
+      <i data-i="stack" data-w="light" class="prova__icone"></i>
+      <div><strong>+25 milhões m²</strong><span>de geomembrana instalada</span></div>
+    </li>
+    <li class="prova prova--copia" aria-hidden="true">
+      <i data-i="calendar-check" data-w="light" class="prova__icone"></i>
+      <div><strong>Desde 2019</strong><span>no oeste da Bahia</span></div>
+    </li>
+    <li class="prova prova--copia" aria-hidden="true">
+      <img class="prova__selo" data-img="selo-cwt" sizes="56px" alt="" decoding="async">
+      <div><strong>IAGI · CWT</strong><span>certificação internacional de instalador</span></div>
+    </li>
+    <li class="prova prova--copia" aria-hidden="true">
+      <i data-i="map-trifold" data-w="light" class="prova__icone"></i>
+      <div><strong>4 estados</strong><span>Maranhão, Tocantins, Piauí e Bahia</span></div>
     </li>
   </ul>
 </section>
