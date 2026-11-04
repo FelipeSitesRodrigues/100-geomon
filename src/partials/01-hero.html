@@ -1,0 +1,37 @@
+<section class="hero" id="inicio" aria-labelledby="hero-titulo">
+  <!-- vídeo de drone em órbita (Google Flow, a partir da foto real). A capa é o 1º quadro e o
+       LCP; o vídeo só carrega depois que ela pinta (01-hero.js) -->
+  <div class="hero__midia">
+    <img class="hero__capa" data-img="hero-capa" data-preload sizes="(min-width: 48em) 100vw, 92vw" alt="Reservatório circular de irrigação revestido com geomembrana pela Geomon, cheio de água, visto de drone ao entardecer no oeste da Bahia" fetchpriority="high" decoding="async">
+    <video class="hero__video" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" data-src-grande="/assets/video/hero-1280.mp4" data-src-pequeno="/assets/video/hero-854.mp4"></video>
+  </div>
+
+  <div class="hero__conteudo caixa">
+    <span class="etiqueta hero__etiqueta anim-hero-texto" style="--atraso:.1s">Geomembrana para o agro</span>
+    <h1 class="hero__titulo titulo anim-hero" id="hero-titulo" data-palavras>Geomembrana instalada e testada, <em>emenda por emenda.</em></h1>
+    <p class="hero__texto anim-hero-texto" style="--atraso:.55s">Reservatórios, canais e tanques revestidos para fazendas e agroindústrias do oeste da Bahia e do MATOPIBA, com técnicos de certificação internacional.</p>
+    <div class="botoes hero__botoes anim-hero-texto" style="--atraso:.7s">
+      <a class="botao botao--verde" data-brilho href="{{wa:Olá! Vim pelo site da Geomon e gostaria de um orçamento.}}" target="_blank" rel="noopener"><span class="brilho" aria-hidden="true"><span class="brilho__volta"><span class="brilho__ponto"></span></span></span><span class="brilho-fio" aria-hidden="true"><span class="brilho__ponto"></span></span>Pedir orçamento <i data-i="arrow-right" data-w="bold" class="i--seta"></i></a>
+      <a class="botao botao--contorno" href="#obras">Ver obras</a>
+    </div>
+  </div>
+
+  <ul class="provas caixa" data-conta-grupo data-conta-atraso="900">
+    <li class="prova anim-hero-texto" style="--atraso:.85s">
+      <i data-i="stack" data-w="light" class="prova__icone"></i>
+      <div><strong>+<span data-conta>25</span> milhões m²</strong><span>de geomembrana instalada</span></div>
+    </li>
+    <li class="prova anim-hero-texto" style="--atraso:.95s">
+      <i data-i="calendar-check" data-w="light" class="prova__icone"></i>
+      <div><strong>Desde 2019</strong><span>no oeste da Bahia</span></div>
+    </li>
+    <li class="prova anim-hero-texto" style="--atraso:1.05s">
+      <img class="prova__selo" data-img="selo-cwt" sizes="56px" alt="" loading="lazy" decoding="async">
+      <div><strong>IAGI · CWT</strong><span>certificação internacional de instalador</span></div>
+    </li>
+    <li class="prova anim-hero-texto" style="--atraso:1.15s">
+      <i data-i="map-trifold" data-w="light" class="prova__icone"></i>
+      <div><strong><span class="prova__pulo">4</span> estados</strong><span>Maranhão, Tocantins, Piauí e Bahia</span></div>
+    </li>
+  </ul>
+</section>

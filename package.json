@@ -1,0 +1,23 @@
+{
+  "name": "0100-geomon",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Landing page da Geomon Revestimento de Solo. HTML, CSS e JS estático, sem dependência em tempo de execução.",
+  "scripts": {
+    "build": "node build.mjs",
+    "publicar": "node build.mjs --publicar",
+    "serve": "node scripts/serve.mjs 3410",
+    "imagens": "node scripts/processar-imagens.mjs",
+    "video": "node scripts/video-hero.mjs && node scripts/video-cta.mjs"
+  },
+  "devDependencies": {
+    "@fontsource/plus-jakarta-sans": "^5.3.0",
+    "@imgly/background-removal-node": "^1.4.5",
+    "@phosphor-icons/core": "^2.1.1",
+    "cheerio": "^1.2.0",
+    "dseg": "^0.46.0",
+    "puppeteer-core": "^25.16.0",
+    "sharp": "^0.35.5"
+  }
+}

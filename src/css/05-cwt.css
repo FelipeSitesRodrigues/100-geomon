@@ -1,0 +1,64 @@
+/* ---------------------------------------------------------------- certificação CWT
+   A cena do mockup: o técnico soldando de ponta a ponta (quadro real do vídeo, estendido pros
+   lados e com a luz de fim de tarde no ChatGPT), escuro à esquerda, onde fica o texto. O selo
+   da IAGI no alto, à direita, com os arcos do reservatório em volta (centrados nele). Entrada:
+   a foto assenta (scale 1.08 para 1), o selo gira pra dentro e os arcos aparecem.           */
+/* o topo da seção (o raio) fica atrás da faixa azul: o selo e o texto descem esse tanto */
+.cwt { --selo: 216px; --selo-d: 2.5%; --selo-t: calc(34px + var(--raio)); overflow: hidden; isolation: isolate; background: #0A1210; padding: calc(150px + var(--raio)) 0 160px; }
+.cwt__foto { position: absolute; inset: 0; z-index: -2; }
+.cwt__foto picture, .cwt__foto img { width: 100%; height: 100%; object-fit: cover; object-position: 60% 50%; }
+.cwt__foto::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgb(8 16 14 / .82) 0%, rgb(8 16 14 / .55) 30%, rgb(8 16 14 / 0) 56%); }
+
+.cwt__arcos { z-index: -1; width: 1000px; right: calc(var(--selo-d) + var(--selo) / 2 - 500px); top: calc(var(--selo-t) + var(--selo) / 2 - 500px); stroke: rgb(255 255 255 / .2); -webkit-mask-image: linear-gradient(180deg, #000 38%, transparent 74%); mask-image: linear-gradient(180deg, #000 38%, transparent 74%); }
+.cwt__selo { position: absolute; z-index: 1; right: var(--selo-d); top: var(--selo-t); width: var(--selo); filter: drop-shadow(0 26px 30px rgb(0 0 0 / .55)); }
+
+.cwt__texto { position: relative; }
+.cwt__seta { display: block; font-size: 52px; color: #fff; }
+.cwt .titulo { margin-top: 40px; font-size: 80px; line-height: 1.02; letter-spacing: -.035em; }
+.cwt__unica { display: flex; align-items: flex-start; gap: 22px; margin-top: 44px; max-width: 18.5em; font-size: 25px; font-weight: 500; line-height: 1.38; letter-spacing: -.01em; }
+.cwt__check { flex: none; display: grid; place-items: center; width: 58px; height: 58px; margin-top: 2px; border-radius: 12px; background: var(--verde); color: #04241A; font-size: 28px; }
+.cwt__nortene { margin-top: 36px; font-size: 21px; color: rgb(255 255 255 / .72); }
+.cwt .botoes { margin-top: 48px; }
+.cwt .botao { min-height: 62px; padding: 0 34px; font-size: 19px; }
+
+/* entrada: a foto sem fade (fundo grande), só assentando; o selo gira e cresce até o lugar */
+.js .cwt__foto[data-revela] { opacity: 1; transition: transform 2.6s cubic-bezier(.2, .7, .2, 1); }
+.js .cwt__foto[data-revela]:not(.visivel) { transform: scale(1.08); }
+.js .cwt__selo[data-revela] { transition: opacity .6s var(--anim-ease) .35s, transform 1.3s var(--anim-mola-suave) .35s; }
+.js .cwt__selo[data-revela]:not(.visivel) { transform: scale(.55) rotate(-38deg); }
+.js .cwt__arcos { opacity: 0; transition: opacity 1.6s var(--anim-ease) .5s; }
+.js .cwt:has(.cwt__selo.visivel) .cwt__arcos { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .js .cwt__arcos { opacity: 1; transition: none; }
+  .js :is(.cwt__foto, .cwt__selo)[data-revela]:not(.visivel) { transform: none; }
+}
+
+/* tela média: a foto corta mais dos lados; mostrar mais da direita tira o técnico de baixo do selo */
+@media (max-width: 74.99em) {
+  .cwt__foto img { object-position: 85% 50%; }
+}
+/* tablet e celular: a foto vira um bloco em cima, com o técnico e a soldadora, e desce no
+   escuro da seção; o texto entra embaixo */
+@media (max-width: 63.99em) {
+  /* o técnico fica no alto à direita da foto: o selo vai pro canto esquerdo, na fumaça escura */
+  .cwt { --selo: 150PX; --selo-t: calc(28PX + var(--raio)); padding: 0 0 96PX; }
+  .cwt__selo { right: auto; left: 20PX; }
+  .cwt__foto { position: relative; inset: auto; aspect-ratio: 16 / 11; }
+  .cwt__foto img { object-position: 74% 50%; }
+  .cwt__foto::after { background: linear-gradient(180deg, rgb(10 18 16 / 0) 58%, #0A1210 100%); }
+  .cwt__arcos { width: 620PX; right: auto; left: calc(20PX + var(--selo) / 2 - 310PX); top: calc(var(--selo-t) + var(--selo) / 2 - 310PX); }
+  .cwt__texto { margin-top: -24PX; }
+  .cwt__seta { font-size: 40PX; }
+  .cwt .titulo { margin-top: 24PX; font-size: clamp(40PX, 9vw, 64PX); }
+}
+@media (max-width: 47.99em) {
+  .cwt { --selo: 112PX; --selo-t: calc(22PX + var(--raio)); padding-bottom: 80PX; }
+  .cwt__selo { left: 16PX; }
+  .cwt__arcos { left: calc(16PX + var(--selo) / 2 - 310PX); }
+  .cwt__foto { aspect-ratio: 1; }
+  .cwt__unica { gap: 16PX; margin-top: 30PX; font-size: 19PX; }
+  .cwt__check { width: 44PX; height: 44PX; border-radius: 10PX; font-size: 21PX; }
+  .cwt__nortene { margin-top: 24PX; font-size: 17PX; }
+  .cwt .botoes { margin-top: 34PX; }
+  .cwt .botao { min-height: 56PX; font-size: 17PX; flex: 1 1 100%; }
+}

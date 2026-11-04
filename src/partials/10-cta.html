@@ -1,0 +1,18 @@
+<section class="cta secao--sobe" id="contato" aria-labelledby="cta-titulo">
+  <!-- filmagem real de drone (canal entre os círculos de algodão, fim de tarde). A capa é o 1º
+       quadro e o vídeo só carrega perto da seção (10-cta.js); no celular, capa e vídeo em pé -->
+  <div class="cta__midia">
+    <img data-img="cta" data-picture="cta__capa--larga" sizes="100vw" alt="" loading="lazy" decoding="async">
+    <img data-img="cta-celular" data-picture="cta__capa--celular" sizes="100vw" alt="" loading="lazy" decoding="async">
+    <video class="cta__video" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" data-src-grande="/assets/video/cta-1600.mp4" data-src-celular="/assets/video/cta-540.mp4"></video>
+  </div>
+  <div class="caixa cta__conteudo">
+    <span class="etiqueta" data-revela>Contato</span>
+    <h2 class="titulo cta__titulo" id="cta-titulo" data-palavras data-revela="palavras">Vamos construir seu <em>próximo projeto?</em></h2>
+    <p class="cta__texto" data-revela>Conte o que você precisa. A equipe da Geomon responde pelo WhatsApp.</p>
+    <div class="botoes" data-revela style="--atraso:.1s">
+      <a class="botao botao--verde" data-brilho href="{{wa:Olá! Vim pelo site da Geomon e quero conversar sobre um projeto.}}" target="_blank" rel="noopener"><span class="brilho" aria-hidden="true"><span class="brilho__volta"><span class="brilho__ponto"></span></span></span><span class="brilho-fio" aria-hidden="true"><span class="brilho__ponto"></span></span><i data-i="whatsapp-logo" data-w="regular"></i>Falar com a Geomon</a>
+      <a class="botao botao--contorno" href="tel:+{{cfg.whatsapp}}"><i data-i="phone" data-w="regular"></i>{{cfg.telefone}}</a>
+    </div>
+  </div>
+</section>

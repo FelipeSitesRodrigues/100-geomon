@@ -1,0 +1,22 @@
+/* ---------------------------------------------------------------- cabeçalho
+   Por cima do hero, sem fundo. Logo à esquerda, links no meio, botão contornado à direita. */
+.topo { position: absolute; inset: 0 0 auto; z-index: 20; color: #fff; padding-top: 30px; }
+.topo__barra { display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+.topo__logo img { width: 190px; }
+.topo__menu { display: flex; gap: 44px; font-size: 16px; font-weight: 600; }
+.topo__menu a { position: relative; padding: 6px 0; opacity: .92; transition: opacity .3s var(--ease-hover); }
+.topo__menu a::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 1.5PX; border-radius: 2px; background: var(--verde); transform: scaleX(0); transform-origin: left; transition: transform .45s var(--ease); }
+.topo__menu a:hover { opacity: 1; }
+.topo__menu a:hover::after { transform: none; }
+.topo__botao { min-height: 50px; padding: 0 24px; font-size: 16px; }
+.topo__botao .i { color: var(--verde); }
+
+@media (max-width: 74.99em) {
+  .topo__menu { display: none; }
+}
+@media (max-width: 47.99em) {
+  .topo { padding-top: 18PX; }
+  .topo__logo img { width: 138PX; }
+  .topo__botao { min-height: 42PX; padding: 0 16PX; font-size: 14PX; gap: 8PX; }
+  .topo__botao .i { font-size: 17PX; }
+}

@@ -1,0 +1,87 @@
+/* ---------------------------------------------------------------- hero
+   Computador: o vídeo de drone ocupa a tela; o texto fica à esquerda, sobre um escurecimento
+   que some antes do reservatório; as 4 provas na base. Celular (padrão da casa): título,
+   vídeo, texto, botões, provas, com os filhos soltos no grid (grid-template-areas).          */
+.hero {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  min-height: max(720px, 100svh);
+  padding: 150px 0 calc(40px + var(--raio));
+  color: #fff;
+  background: var(--preto);
+  overflow: hidden;
+}
+.hero__midia { position: absolute; inset: 0; z-index: -2; }
+.hero__capa, .hero__capa img, .hero__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 62% 50%; }
+.hero__video { opacity: 0; transition: opacity .6s linear; }
+.hero__video.tocando { opacity: 1; }
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgb(4 14 13 / .86) 0%, rgb(4 14 13 / .62) 30%, rgb(4 14 13 / .16) 55%, rgb(4 14 13 / 0) 68%),
+    linear-gradient(180deg, rgb(4 14 13 / .55) 0%, rgb(4 14 13 / 0) 22%, rgb(4 14 13 / 0) 58%, rgb(4 14 13 / .82) 100%);
+}
+
+.hero__conteudo { align-self: center; padding-bottom: 40px; }
+.hero__titulo { max-width: 11.6em; margin: 26px 0 26px; font-size: 72px; line-height: 1.02; text-shadow: 0 2px 40px rgb(0 0 0 / .18); }
+.hero__texto { max-width: 30em; font-size: 19px; line-height: 1.6; color: rgb(255 255 255 / .9); }
+.hero__botoes { margin-top: 38px; }
+
+/* as 4 provas: ícone verde fino, número em bold, linha; separadas por fio vertical */
+.provas { display: grid; grid-template-columns: repeat(4, 1fr); padding-top: 30px; border-top: 1px solid rgb(255 255 255 / .16); }
+.prova { display: flex; align-items: center; gap: 18px; padding: 0 28px; }
+.prova:first-child { padding-left: 0; }
+.prova + .prova { border-left: 1px solid rgb(255 255 255 / .2); }
+.prova__icone { font-size: 46px; color: var(--verde); }
+.prova picture { flex: none; width: 52px; }
+.prova__selo { width: 52px; }
+.prova__selo img { filter: drop-shadow(0 4px 10px rgb(0 0 0 / .35)); }
+.prova strong { display: block; font-size: 24px; font-weight: 800; letter-spacing: -.02em; line-height: 1.15; white-space: nowrap; }
+.prova span:not(.prova__pulo):not([data-conta]) { display: block; margin-top: 4px; font-size: 14px; line-height: 1.4; color: rgb(255 255 255 / .74); }
+.js .prova__pulo { display: inline-block; animation: pulo .8s cubic-bezier(.34, 1.56, .64, 1) 1.9s both; }
+@keyframes pulo { from { opacity: 0; transform: scale(.6); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .js .prova__pulo { animation: none; }
+}
+
+/* ---------------------------------------------------------------- tablet */
+@media (max-width: 74.99em) {
+  .hero__titulo { font-size: clamp(44PX, 6.4vw, 64PX); }
+  .provas { grid-template-columns: 1fr 1fr; row-gap: 26PX; }
+  .prova:nth-child(3) { padding-left: 0; border-left: 0; }
+}
+
+/* ---------------------------------------------------------------- celular
+   título → vídeo → texto → botões → provas. O vídeo vira um bloco de cantos arredondados. */
+@media (max-width: 47.99em) {
+  .hero {
+    min-height: 0;
+    padding: 96PX 0 calc(48PX + var(--raio));
+    grid-template-rows: none;
+    grid-template-columns: 20PX minmax(0, 1fr) 20PX;
+    grid-template-areas: '. etiqueta .' '. titulo .' 'midia midia midia' '. texto .' '. botoes .' '. provas .';
+    background: radial-gradient(120% 60% at 80% 0%, #0b3b37 0%, var(--petroleo) 55%, var(--preto) 100%);
+  }
+  .hero::before { display: none; }
+  .hero__conteudo { display: contents; }
+  .hero__etiqueta { grid-area: etiqueta; justify-self: start; }
+  .hero__titulo { grid-area: titulo; margin: 18PX 0 22PX; font-size: clamp(36PX, 10.4vw, 46PX); }
+  .hero__midia { grid-area: midia; position: relative; inset: auto; z-index: 0; margin: 0 12PX; aspect-ratio: 4 / 3; border-radius: 22PX; overflow: hidden; box-shadow: 0 24PX 50PX -24PX rgb(0 0 0 / .7); }
+  .hero__capa, .hero__capa img, .hero__video { object-position: 50% 50%; }
+  .hero__texto { grid-area: texto; margin-top: 24PX; font-size: 16.5PX; }
+  .hero__botoes { grid-area: botoes; margin-top: 26PX; }
+  .hero__botoes .botao { flex: 1 1 auto; }
+  .provas { grid-area: provas; width: auto; grid-template-columns: 1fr; margin-top: 40PX; padding-top: 6PX; row-gap: 0; }
+  .prova, .prova:first-child, .prova:nth-child(3), .prova + .prova { padding: 16PX 0; border-left: 0; }
+  .prova + .prova { border-top: 1px solid rgb(255 255 255 / .12); }
+  .prova__icone { font-size: 38PX; }
+  .prova picture, .prova__selo { width: 42PX; }
+  .prova strong { font-size: 21PX; }
+}

@@ -1,0 +1,38 @@
+<section class="solda secao secao--claro secao--sobe" id="qualidade" aria-labelledby="solda-titulo">
+  <svg class="arcos solda__arcos" viewBox="0 0 600 600" aria-hidden="true" focusable="false"><circle cx="300" cy="300" r="150"/><circle cx="300" cy="300" r="220"/><circle cx="300" cy="300" r="295"/></svg>
+  <!-- computador: o técnico com a lâmina à esquerda, encostado no fim da seção, e o resto
+       empilhado à direita; celular: título, testes, botão e o técnico no fim (grid-template-areas
+       no 04-solda.css) -->
+  <div class="caixa solda__grade">
+    <div class="solda__cabeca">
+      <span class="etiqueta" data-revela>Controle de qualidade</span>
+      <h2 class="titulo" id="solda-titulo" data-palavras data-revela="palavras">O reservatório é tão forte quanto a <em>emenda</em> mais fraca.</h2>
+      <p class="texto solda__intro" data-revela style="--atraso:.15s">A geomembrana chega em rolos e é soldada no campo: são milhares de metros de emenda numa obra só. Por isso a Geomon não entrega solda sem testar.</p>
+    </div>
+
+    <!-- o técnico recortado (fundo removido, scripts/limpar-recorte.mjs) direto no fundo da seção,
+         do topo do conteúdo até o fim dela, com os arcos atrás; a legenda é uma etiqueta branca por cima da camisa -->
+    <figure class="lamina" data-revela="zoom">
+      <svg class="arcos lamina__arcos" viewBox="0 0 600 600" aria-hidden="true" focusable="false"><circle cx="300" cy="300" r="150"/><circle cx="300" cy="300" r="220"/><circle cx="300" cy="300" r="295"/></svg>
+      <img data-img="lamina-recorte" sizes="(min-width: 75em) 58vw, (min-width: 48em) 560px, 92vw" alt="Técnico da Geomon segura a tira de geomembrana cortada da solda depois do teste destrutivo" loading="lazy" decoding="async">
+      <figcaption class="lamina__legenda"><span class="lamina__chip">Teste destrutivo aprovado</span><strong>Essa tira é a prova.</strong>Ela sai da sua obra e passa pelo teste.</figcaption>
+    </figure>
+
+    <ol class="passos solda-fio">
+      <li class="passo-teste" data-revela="grade" style="--i:0">
+        <img data-img="passo-solda" sizes="(min-width: 48em) 140px, 112px" alt="Soldadora de cunha unindo duas mantas de geomembrana" loading="lazy" decoding="async">
+        <div><h3><b>01</b> Solda dupla</h3><p>A máquina de cunha une as mantas em duas trilhas, com um canal de ar entre elas.</p></div>
+      </li>
+      <li class="passo-teste" data-revela="grade" style="--i:1">
+        <img data-img="passo-ar" sizes="(min-width: 48em) 140px, 112px" alt="Teste de ar com agulha e manômetro no canal da solda dupla" loading="lazy" decoding="async">
+        <div><h3><b>02</b> Teste de ar</h3><p>O canal recebe ar sob pressão. Se o manômetro cair, a falha é corrigida na hora.</p></div>
+      </li>
+      <li class="passo-teste" data-revela="grade" style="--i:2">
+        <img data-img="passo-tensiometro" sizes="(min-width: 48em) 140px, 112px" alt="Tensiômetro de campo puxando a tira da solda até romper" loading="lazy" decoding="async">
+        <div><h3><b>03</b> Teste destrutivo</h3><p>O tensiômetro puxa a tira até romper. Passa quando rasga a manta, nunca a emenda.</p></div>
+      </li>
+    </ol>
+
+    <a class="botao botao--escuro solda__botao" data-revela href="{{wa:Olá! Vim pelo site e quero saber como funciona o controle de qualidade da Geomon na minha obra.}}" target="_blank" rel="noopener">Quero uma obra testada <i data-i="arrow-right" data-w="bold" class="i--seta"></i></a>
+  </div>
+</section>

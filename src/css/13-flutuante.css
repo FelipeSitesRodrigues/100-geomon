@@ -1,0 +1,26 @@
+/* ---------------------------------------------------------------- WhatsApp flutuante
+   Aparece depois do hero e some quando o CTA final está na tela (13-flutuante.js).          */
+.flutuante {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--verde);
+  color: #04241A;
+  font-size: 30px;
+  box-shadow: 0 16px 34px -12px rgb(0 0 0 / .55), inset 0 0 0 1px rgb(255 255 255 / .35);
+  opacity: 0;
+  transform: translate3d(0, 20px, 0) scale(.85);
+  pointer-events: none;
+  transition: opacity .45s var(--ease), transform .55s var(--ease), background-color .3s var(--ease-hover);
+}
+.flutuante.ativo { opacity: 1; transform: none; pointer-events: auto; }
+.flutuante:hover { background: #6BEA89; }
+@media (max-width: 47.99em) {
+  .flutuante { right: 16PX; bottom: 16PX; width: 56PX; height: 56PX; font-size: 28PX; }
+}

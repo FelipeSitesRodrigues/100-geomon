@@ -1,0 +1,34 @@
+<section class="diferenciais secao secao--petroleo secao--sobe" aria-labelledby="dif-titulo">
+  <!-- o mockup aprovado espelhado: o medidor à esquerda e o texto à direita. O fundo é a maleta
+       verde desfocada (sem o aparelho), escura à direita; o medidor vem recortado por cima e entra
+       deslizando. O visor da foto é vazio: o número é texto e conta de 0.00 até 0.97 mm quando o
+       medidor aparece (06-diferenciais.js), pedido do Wilton. -->
+  <figure class="dif__fundo" aria-hidden="true">
+    <img data-img="dif-fundo" sizes="100vw" alt="" loading="lazy" decoding="async">
+  </figure>
+  <div class="caixa diferenciais__grade">
+    <figure class="medidor" data-medidor data-revela="medidor">
+      <img data-img="medidor-recorte" sizes="(min-width: 75em) 50vw, (min-width: 48em) 600px, 100vw" alt="Micrômetro medindo 0,97 mm de espessura da geomembrana antes da instalação" loading="lazy" decoding="async">
+      <span class="visor" aria-hidden="true"><span class="visor__fantasma">8.88</span><span class="visor__valor" data-alvo="0.97">0.97</span><span class="visor__mm">mm</span></span>
+      <figcaption class="medidor__nota"><span class="medidor__fio" aria-hidden="true"></span>Espessura conferida no campo, antes de instalar.</figcaption>
+    </figure>
+
+    <div class="dif__texto">
+      <i data-i="arrow-up-right" data-w="light" class="dif__seta"></i>
+      <span class="etiqueta" data-revela>Diferenciais</span>
+      <h2 class="titulo" id="dif-titulo" data-palavras data-revela="palavras">Estrutura para entregar<br> com <em>controle.</em></h2>
+      <ul class="lista-dif">
+        <li data-revela="grade" style="--i:0"><div><h3>IAGI</h3><p>Técnicos com certificado internacional de instalador.</p></div></li>
+        <li data-revela="grade" style="--i:1"><div><h3>Nortène</h3><p>Credenciamento junto à fabricante de geossintéticos.</p></div></li>
+        <li data-revela="grade" style="--i:1"><div><h3>Equipe de campo</h3><p>Técnicos com experiência em obra de grande porte.</p></div></li>
+        <li data-revela="grade" style="--i:2"><div><h3>Controle medido</h3><p>Equipamentos próprios para ensaio de espessura, ar e tração.</p></div></li>
+        <li data-revela="grade" style="--i:2"><div><h3>Plantão</h3><p>Equipe plantonista para suporte durante a operação.</p></div></li>
+        <li data-revela="grade" style="--i:3"><div><h3>Mergulho</h3><p>Assistência com mergulho, sem esvaziar o reservatório.</p></div></li>
+      </ul>
+      <div class="botoes" data-revela>
+        <a class="botao botao--verde" href="{{wa:Olá! Vim pelo site da Geomon e gostaria de um orçamento.}}" target="_blank" rel="noopener">Pedir orçamento</a>
+        <a class="botao botao--contorno" href="#empresa">Ver a equipe</a>
+      </div>
+    </div>
+  </div>
+</section>

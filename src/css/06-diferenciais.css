@@ -1,0 +1,93 @@
+/* ---------------------------------------------------------------- diferenciais
+   O mockup aprovado, espelhado e mais baixo (pedido do Felipe: horizontal, não quadrado): o
+   fundo é a maleta verde desfocada de ponta a ponta (16:9), escura à direita; o medidor
+   recortado à esquerda, com a mão saindo pela borda da tela e a anotação com o fio até o visor;
+   à direita o texto com os 6 diferenciais em duas colunas, ponto verde e fio embaixo. O medidor
+   entra deslizando da esquerda e o visor conta até 0.97.                                    */
+.diferenciais { --sangra: max(20PX, (100vw - var(--largura)) / 2); overflow: hidden; isolation: isolate; background: #071311; }
+.secao.diferenciais { padding-top: 64px; }
+.secao.diferenciais:has(+ .secao--sobe) { padding-bottom: calc(64px + var(--raio)); }
+.dif__fundo { position: absolute; inset: 0; z-index: -2; }
+.dif__fundo picture, .dif__fundo img { width: 100%; height: 100%; object-fit: cover; object-position: 0% 50%; }
+/* a direita da foto já é quase preta: o véu só garante a leitura do texto */
+.dif__fundo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgb(7 19 17 / 0) 42%, rgb(7 19 17 / .5) 62%, rgb(7 19 17 / .66)); }
+.diferenciais__grade { display: grid; grid-template-columns: minmax(0, .92fr) minmax(0, 1fr); gap: 56px; align-items: center; }
+
+/* o medidor: a mão entra pela borda esquerda da tela (a figura sangra pela margem) e desce até
+   o fim da seção, com os dedos sumindo atrás da borda da seção seguinte */
+.medidor { position: relative; container-type: inline-size; align-self: end; width: calc(100% + var(--sangra)); margin: 0 0 calc(-64px - var(--raio)) calc(var(--sangra) * -1); }
+.medidor picture, .medidor img { width: 100%; }
+.medidor img { filter: drop-shadow(0 40px 50px rgb(0 0 0 / .55)); }
+/* o visor da foto: x de 46,3% a 76,3%, y de 24,9% a 37,7% (largura da figura = 100cqw) */
+.visor {
+  position: absolute;
+  z-index: 2;
+  left: 46.3%;
+  top: 24.9%;
+  width: 30%;
+  height: 12.8%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 5.2cqw;
+  font-family: 'DSEG7', monospace;
+  color: #18211d;
+  line-height: 1;
+}
+.visor__fantasma, .visor__valor { font-size: 8.6cqw; letter-spacing: .02em; }
+.visor__fantasma { position: absolute; right: 5.2cqw; opacity: .07; }
+.visor__valor { position: relative; text-shadow: 0 0 1PX rgb(24 33 29 / .45); font-variant-numeric: tabular-nums; }
+.visor__mm { position: absolute; right: 1.6cqw; bottom: 1.9cqw; font-family: var(--fonte); font-weight: 800; font-size: 2.2cqw; }
+
+/* anotação no alto, à direita do mostrador; o fio desce na diagonal até um ponto no visor */
+.medidor__nota { position: absolute; z-index: 2; left: 79%; top: 0; width: 10.5em; font-size: 16px; font-weight: 600; line-height: 1.35; color: #fff; }
+/* comprimento e ângulo medidos: do canto da anotação até 72% x 31% da figura, dentro do visor */
+.medidor { --fio-len: 21.5cqw; --fio-ang: 109deg; }
+.medidor__fio { position: absolute; left: 0; top: calc(100% + 10px); width: var(--fio-len); height: 1px; background: rgb(255 255 255 / .85); transform-origin: 0 50%; transform: rotate(var(--fio-ang)); }
+.medidor__fio::after { content: ''; position: absolute; right: -5px; top: -5px; width: 11px; height: 11px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 4px rgb(255 255 255 / .2); }
+
+/* texto à direita, como no mockup */
+.dif__seta { display: block; font-size: 36px; color: #fff; margin-bottom: 14px; }
+.diferenciais .titulo { margin-top: 18px; font-size: 54px; line-height: 1.04; letter-spacing: -.035em; }
+.lista-dif { display: grid; grid-template-columns: 1fr 1fr; column-gap: 28px; margin: 28px 0 32px; }
+.lista-dif li { position: relative; padding: 14px 0 14px 26px; border-bottom: 1px solid rgb(255 255 255 / .16); }
+.lista-dif li::before { content: ''; position: absolute; left: 0; top: 22px; width: 10px; height: 10px; border-radius: 50%; background: var(--verde); box-shadow: 0 0 0 4px rgb(74 222 110 / .16); }
+.lista-dif h3 { font-size: 21px; letter-spacing: -.015em; }
+.lista-dif p { margin-top: 4px; font-size: 15.5px; line-height: 1.45; color: rgb(255 255 255 / .74); }
+.diferenciais .botao { min-height: 58px; padding: 0 32px; font-size: 18px; }
+
+/* entrada: o medidor desliza da esquerda girando um pouco; depois a anotação aparece e o fio
+   cresce até o visor */
+.js .medidor[data-revela] { transition: opacity .7s var(--anim-ease), transform 1.4s cubic-bezier(.2, .8, .2, 1); }
+.js .medidor[data-revela]:not(.visivel) { transform: translate3d(-16%, 5%, 0) rotate(-10deg); }
+.js .medidor__fio { transition: transform 1s var(--anim-ease) 1.3s; }
+.js .medidor:not(.visivel) .medidor__fio { transform: rotate(var(--fio-ang)) scaleX(0); }
+.js .medidor__nota { transition: opacity .8s var(--anim-ease) 1.1s; }
+.js .medidor:not(.visivel) .medidor__nota { opacity: 0; }
+@media (prefers-reduced-motion: reduce) {
+  .js .medidor[data-revela]:not(.visivel) { transform: none; }
+  .js .medidor:not(.visivel) .medidor__fio { transform: rotate(var(--fio-ang)); }
+  .js .medidor:not(.visivel) .medidor__nota { opacity: 1; }
+}
+
+/* tablet e celular: a maleta vira um bloco quadrado em cima, com o medidor por cima dela, e
+   desce no escuro da seção; o texto vem embaixo */
+@media (max-width: 74.99em) {
+  .diferenciais { --sangra: 20PX; }
+  .diferenciais__grade { grid-template-columns: 1fr; gap: 40PX; }
+  .medidor { align-self: auto; width: min(100% + 20PX, 620PX); margin-bottom: 0; }
+  .dif__fundo { bottom: auto; height: min(100vw, 760PX); }
+  .dif__fundo img { object-position: 12% 50%; }
+  .dif__fundo::after { background: linear-gradient(180deg, rgb(7 19 17 / 0) 45%, #071311 96%); }
+  .diferenciais .titulo { font-size: clamp(40PX, 7vw, 60PX); }
+}
+@media (max-width: 47.99em) {
+  .secao.diferenciais { padding-top: 40PX; }
+  .medidor__nota { left: 72%; width: 8.2em; font-size: 12.5PX; }
+  .medidor { --fio-len: 11cqw; --fio-ang: 90deg; }
+  .medidor__fio { top: calc(100% + 6PX); }
+  .lista-dif { grid-template-columns: 1fr; margin: 24PX 0 30PX; }
+  .lista-dif h3 { font-size: 18.5PX; }
+  .lista-dif p { font-size: 14.5PX; }
+  .diferenciais .botao { flex: 1 1 100%; }
+}

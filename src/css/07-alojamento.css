@@ -1,0 +1,31 @@
+/* ---------------------------------------------------------------- alojamento móvel
+   A carreta numa foto larga; no canto, a mesma carreta vista do drone, como detalhe.       */
+.alojamento { overflow: hidden; isolation: isolate; }
+.alojamento__arcos { width: 760px; right: -300px; top: -320px; z-index: -1; }
+.carreta { position: relative; margin-top: 44px; aspect-ratio: 1240 / 500; border-radius: var(--raio-card); overflow: hidden; box-shadow: 0 40px 70px -44px rgb(10 31 28 / .6); }
+.carreta > picture, .carreta > picture img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 58%; }
+.carreta__detalhe { position: absolute; right: 22px; bottom: 22px; width: 25%; aspect-ratio: 16 / 10; border-radius: 16px; overflow: hidden; box-shadow: 0 0 0 4px #fff, 0 20px 40px -16px rgb(0 0 0 / .55); }
+.carreta__detalhe picture, .carreta__detalhe img { width: 100%; height: 100%; object-fit: cover; }
+.carreta__detalhe .pilula-vidro { position: absolute; left: 10px; bottom: 10px; padding: 6px 12px; font-size: 12.5px; gap: 7px; }
+.carreta__detalhe .pilula-vidro::before { width: 6px; height: 6px; }
+
+.beneficios { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 36px; }
+.beneficios li { display: flex; gap: 18px; padding: 0 32px; }
+.beneficios li:first-child { padding-left: 0; }
+.beneficios li + li { border-left: 1px solid var(--linha-clara); }
+.beneficios .i { font-size: 40px; color: var(--verde-forte); }
+.beneficios h3 { font-size: 20px; letter-spacing: -.015em; }
+.beneficios p { margin-top: 4px; font-size: 15.5px; line-height: 1.5; color: var(--tinta-2); }
+
+@media (max-width: 74.99em) {
+  .beneficios { grid-template-columns: 1fr; gap: 0; }
+  .beneficios li, .beneficios li:first-child { padding: 18PX 0; border-left: 0; }
+  .beneficios li + li { border-top: 1px solid var(--linha-clara); }
+}
+@media (max-width: 47.99em) {
+  .carreta { margin-top: 36PX; aspect-ratio: 4 / 3.3; }
+  .carreta__detalhe { width: 46%; right: 12PX; bottom: 12PX; border-radius: 12PX; box-shadow: 0 0 0 3PX #fff, 0 14PX 30PX -12PX rgb(0 0 0 / .55); }
+  .carreta__detalhe .pilula-vidro { display: none; }
+  .beneficios { margin-top: 28PX; }
+  .beneficios .i { font-size: 34PX; }
+}

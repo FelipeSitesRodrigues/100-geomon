@@ -1,0 +1,37 @@
+/* ---------------------------------------------------------------- quem confia
+   Continua o preto da escala. Os logos vão na cor original: azul-marinho e preto sumiriam no
+   fundo escuro, por isso cada um tem a sua placa branca. As placas correm em laço de ponta a
+   ponta da tela, só com transform, e param com o mouse em cima. Com movimento reduzido viram
+   uma grade parada.                                                                         */
+.secao.clientes { padding-top: 0; }
+.marcas { margin-top: 48px; overflow: hidden; }
+.marcas__trilho { display: flex; width: max-content; animation: marcas 44s linear infinite; }
+/* o grupo nunca é mais estreito que a tela, senão sobra um buraco antes da emenda */
+.marcas__grupo { flex: none; display: flex; justify-content: space-around; min-width: 100vw; }
+.marca { flex: none; display: grid; place-items: center; width: 360px; height: 208px; margin-right: 20px; border-radius: var(--raio-card); background: #fff; }
+.marca img { width: auto; height: var(--h); max-width: none; }
+/* cada logo com a altura que equilibra o peso visual dos seis */
+.marca--inpasa { --h: 78px; }
+.marca--slc { --h: 132px; }
+.marca--franciosi { --h: 40px; }
+.marca--gees { --h: 148px; }
+.marca--horizonte { --h: 132px; }
+.marca--hs { --h: 64px; }
+@keyframes marcas { to { transform: translate3d(-50%, 0, 0); } }
+@media (hover: hover) {
+  .marcas:hover .marcas__trilho { animation-play-state: paused; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marcas__trilho { width: auto; animation: none; }
+  .marcas__grupo { flex: 1; flex-wrap: wrap; justify-content: center; gap: 20px; min-width: 0; padding-inline: var(--margem); }
+  .marcas__grupo[aria-hidden] { display: none; }
+  .marca { margin-right: 0; }
+}
+@media (min-width: 75em) {
+  .clientes__titulo { font-size: 64px; }
+}
+@media (max-width: 47.99em) {
+  .marcas { margin-top: 32PX; }
+  .marca { width: 248PX; height: 150PX; margin-right: 12PX; border-radius: 18PX; }
+  .marca img { height: calc(var(--h) * .78); }
+}

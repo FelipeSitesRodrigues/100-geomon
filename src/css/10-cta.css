@@ -1,0 +1,35 @@
+/* ---------------------------------------------------------------- CTA final
+   Filmagem real de drone (canal entre os círculos de algodão, fim de tarde) subindo com a curva
+   sobre o branco do processo. Embaixo, o degradê desce até o preto exato das perguntas, sem
+   emenda; à esquerda, o véu que garante a leitura do texto.                                  */
+.cta { position: relative; isolation: isolate; display: flex; align-items: center; padding: 130px 0 170px; color: #fff; background: var(--preto); overflow: hidden; }
+.cta__midia { position: absolute; inset: 0; z-index: -2; }
+.cta__midia picture, .cta__midia img, .cta__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 0%; }
+.cta__midia .cta__capa--celular { display: none; }
+.cta__video { opacity: 0; transition: opacity .6s linear; }
+.cta__video.tocando { opacity: 1; }
+.cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(180deg, rgb(5 7 7 / 0) 44%, rgb(5 7 7 / .14) 55%, rgb(5 7 7 / .44) 69%, rgb(5 7 7 / .8) 85%, var(--preto) 100%),
+    linear-gradient(90deg, rgb(5 7 7 / .76) 0%, rgb(5 7 7 / .5) 34%, rgb(5 7 7 / 0) 62%);
+}
+.cta__titulo { max-width: 9.6em; font-size: 64px; }
+.cta__texto { margin: 22px 0 34px; max-width: 24em; font-size: 19px; line-height: 1.6; color: rgb(255 255 255 / .88); }
+.cta .botao .i { font-size: 22px; }
+
+@media (max-width: 74.99em) {
+  .cta__titulo { font-size: clamp(38PX, 6vw, 56PX); }
+}
+@media (max-width: 47.99em) {
+  .cta { min-height: 680PX; align-items: flex-end; padding: 240PX 0 36PX; }
+  .cta__midia .cta__capa--larga { display: none; }
+  .cta__midia .cta__capa--celular { display: block; }
+  .cta::before { background: linear-gradient(180deg, rgb(5 7 7 / 0) 22%, rgb(5 7 7 / .32) 38%, rgb(5 7 7 / .7) 56%, rgb(5 7 7 / .92) 78%, var(--preto) 100%); }
+  .cta__titulo { font-size: clamp(34PX, 9.4vw, 42PX); }
+  .cta__texto { font-size: 16.5PX; }
+  .cta .botoes .botao { flex: 1 1 auto; }
+}

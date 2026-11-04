@@ -1,0 +1,208 @@
+/* ---------------------------------------------------------------- fontes (self-hosted) */
+@font-face { font-family: 'Jakarta'; src: url(/assets/fonts/jakarta-500.woff2) format('woff2'); font-weight: 500; font-display: swap; }
+@font-face { font-family: 'Jakarta'; src: url(/assets/fonts/jakarta-600.woff2) format('woff2'); font-weight: 600; font-display: swap; }
+@font-face { font-family: 'Jakarta'; src: url(/assets/fonts/jakarta-700.woff2) format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Jakarta'; src: url(/assets/fonts/jakarta-800.woff2) format('woff2'); font-weight: 800; font-display: swap; }
+/* reserva com a métrica da Jakarta, pra a troca de fonte não empurrar o layout */
+@font-face { font-family: 'Jakarta fallback'; src: local('Arial'); size-adjust: 104%; ascent-override: 96%; descent-override: 21%; line-gap-override: 0%; }
+@font-face { font-family: 'DSEG7'; src: url(/assets/fonts/dseg7-italic.woff2) format('woff2'); font-display: block; }
+
+/* ---------------------------------------------------------------- tokens
+   Cores medidas nos mockups aprovados (chat 2). O verde vivo é só ação e destaque; em fundo
+   claro a palavra em verde usa o verde fundo (contraste de título grande).                   */
+:root {
+  color-scheme: light dark;
+  --claro: #F2F5F0;
+  --branco: #FFFFFF;
+  --petroleo: #032429;
+  --petroleo-2: #06323A;
+  --floresta: #00291D;
+  --preto: #050707;
+  --verde: #4ADE6E;
+  --verde-forte: #1E9E45;
+  --verde-escuro: #0E4A2C;
+  --azul: #1B2A8C;
+  --tinta: #0A1F1C;
+  --tinta-2: #4B5A56;
+  --linha-clara: #DCE3DD;
+  --texto-escuro: rgb(255 255 255 / .74);
+  --linha-escura: rgb(255 255 255 / .14);
+
+  --fonte: 'Jakarta', 'Jakarta fallback', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  --largura: 1240px;
+  --margem: max(20PX, calc((100% - var(--largura)) / 2));
+  --raio: 40px;
+  --raio-card: 24px;
+
+  --ease: cubic-bezier(.22, 1, .36, 1);
+  --ease-hover: cubic-bezier(.4, 0, .2, 1);
+}
+@media (max-width: 47.99em) {
+  :root { --raio: 26px; --raio-card: 20px; }
+}
+
+/* ---------------------------------------------------------------- escala
+   1 rem = 16 px em 1440x900. Acima de 1200 o rem acompanha a largura e a altura da janela, o
+   que for menor: a composição de 1440x900 vale em qualquer tela (o zoom-out do cliente não deixa
+   a página no meio) e numa 1920x1080 a página não estica 33% pra baixo.                        */
+html { font-size: 100%; }
+@media (min-width: 75em) {
+  html { font-size: max(14.5PX, min(100vw / 90, 100vh / 56.25)); }
+}
+
+/* ---------------------------------------------------------------- reset */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  background: var(--preto);
+}
+body {
+  min-height: 100vh;
+  background: var(--claro);
+  color: var(--tinta);
+  font: 500 17px/1.6 var(--fonte);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+}
+img, picture, svg, video { display: block; max-width: 100%; }
+img { height: auto; }
+a { color: inherit; text-decoration: none; }
+ul, ol { list-style: none; padding: 0; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+h1, h2, h3 { font-weight: 800; letter-spacing: -.028em; line-height: 1.04; text-wrap: balance; }
+p { text-wrap: pretty; }
+::selection { background: var(--verde); color: var(--preto); }
+:focus-visible { outline: 2px solid var(--verde); outline-offset: 3px; border-radius: 8px; }
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--petroleo); }
+::-webkit-scrollbar-thumb { background: #1d4a4f; border: 2px solid var(--petroleo); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: var(--verde-forte); }
+.i { width: 1em; height: 1em; fill: currentColor; flex: none; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.pular { position: fixed; left: 16px; top: -60px; z-index: 100; padding: 10px 18px; border-radius: 99px; background: var(--verde); color: var(--preto); font-weight: 700; transition: top .3s var(--ease); }
+.pular:focus { top: 16px; }
+
+/* ---------------------------------------------------------------- seções
+   Claro com escuro: a seção de baixo sobe com os cantos de cima arredondados. Escuro com
+   escuro: degradê (feito no fundo da própria seção).                                         */
+.secao { position: relative; padding: 96px 0; }
+.secao--sobe { margin-top: calc(var(--raio) * -1); border-radius: var(--raio) var(--raio) 0 0; z-index: 1; }
+.secao:has(+ .secao--sobe) { padding-bottom: calc(96px + var(--raio)); }
+.secao--claro { background: var(--claro); color: var(--tinta); }
+.secao--branco { background: var(--branco); color: var(--tinta); }
+.secao--petroleo { background: var(--petroleo); color: #fff; }
+.secao--floresta { background: var(--floresta); color: #fff; }
+.secao--preto { background: var(--preto); color: #fff; }
+.caixa { width: min(100% - 40PX, var(--largura)); margin-inline: auto; position: relative; }
+
+/* arcos finos: o reservatório redondo visto de cima */
+.arcos { position: absolute; pointer-events: none; fill: none; stroke: rgb(255 255 255 / .12); stroke-width: 1; overflow: visible; }
+.secao--claro .arcos, .secao--branco .arcos { stroke: rgb(10 31 28 / .07); }
+
+/* ---------------------------------------------------------------- etiqueta, títulos, texto */
+.etiqueta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 18px 8px 14px;
+  border-radius: 99px;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.2;
+  box-shadow: inset 0 0 0 1.5px rgb(10 31 28 / .16);
+}
+.etiqueta::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--verde-forte); }
+:is(.secao--petroleo, .secao--floresta, .secao--preto, .hero, .cta) .etiqueta { box-shadow: inset 0 0 0 1.5px rgb(255 255 255 / .38); }
+:is(.secao--petroleo, .secao--floresta, .secao--preto, .hero, .cta) .etiqueta::before { background: var(--verde); }
+
+.titulo { font-size: 54px; margin-top: 22px; }
+.titulo em { font-style: normal; color: var(--verde-forte); }
+:is(.secao--petroleo, .secao--floresta, .secao--preto, .hero, .cta) .titulo em { color: var(--verde); }
+.texto { font-size: 18px; line-height: 1.65; color: var(--tinta-2); }
+:is(.secao--petroleo, .secao--floresta, .secao--preto) .texto { color: var(--texto-escuro); }
+
+/* cabeça de seção: título à esquerda, texto à direita com o fio vertical */
+.cabeca { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 64px; align-items: end; }
+.cabeca__lado { padding-left: 32px; border-left: 1px solid rgb(10 31 28 / .18); max-width: 30em; margin-bottom: 6px; }
+:is(.secao--petroleo, .secao--floresta, .secao--preto) .cabeca__lado { border-color: rgb(255 255 255 / .22); }
+
+/* fio duplo vertical da solda, com um ponto de teste por item */
+.solda-fio { position: relative; padding-left: 44px; }
+.solda-fio::before { content: ''; position: absolute; left: 6px; top: 10px; bottom: 10px; width: 5px; border-inline: 1px solid rgb(10 31 28 / .28); }
+
+/* ---------------------------------------------------------------- botões */
+.botoes { display: flex; flex-wrap: wrap; gap: 14px; }
+.botao {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 56px;
+  padding: 0 28px;
+  border-radius: 99px;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -.005em;
+  white-space: nowrap;
+  transition: background-color .3s var(--ease-hover), color .3s var(--ease-hover), box-shadow .3s var(--ease-hover), transform .4s var(--ease);
+}
+.botao .i { font-size: 20px; transition: transform .4s var(--ease); }
+.botao:hover .i--seta { transform: translateX(4px); }
+.botao:active { transform: scale(.98); }
+.botao--verde { background: var(--verde); color: #04241A; }
+.botao--verde:hover { background: #6BEA89; }
+.botao--escuro { background: var(--verde-escuro); color: #fff; }
+.botao--escuro .i { color: var(--verde); }
+.botao--escuro:hover { background: #135C37; }
+.botao--contorno { box-shadow: inset 0 0 0 1.5px currentColor; }
+.botao--contorno:hover { background: rgb(255 255 255 / .08); }
+.secao--claro .botao--contorno:hover, .secao--branco .botao--contorno:hover { background: rgb(10 31 28 / .05); }
+
+.link-seta { display: inline-flex; align-items: center; gap: 10px; font-weight: 700; font-size: 17px; }
+.link-seta .i { color: var(--verde-forte); font-size: 20px; transition: transform .4s var(--ease); }
+:is(.secao--petroleo, .secao--floresta, .secao--preto) .link-seta .i { color: var(--verde); }
+.link-seta:hover .i { transform: translateX(4px); }
+
+/* pílula de vidro escuro sobre foto (legendas) */
+.pilula-vidro {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px;
+  border-radius: 99px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  background: rgb(5 12 12 / .58);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / .22);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+.pilula-vidro::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--verde); flex: none; }
+
+/* ---------------------------------------------------------------- tablet e celular */
+@media (max-width: 74.99em) {
+  .secao { padding: 80PX 0; }
+  .secao:has(+ .secao--sobe) { padding-bottom: calc(80PX + var(--raio)); }
+  .titulo { font-size: clamp(34PX, 5.6vw, 48PX); }
+  .cabeca { grid-template-columns: 1fr; gap: 24PX; }
+}
+@media (max-width: 47.99em) {
+  body { font-size: 16PX; }
+  .secao { padding: 64PX 0; }
+  .secao:has(+ .secao--sobe) { padding-bottom: calc(64PX + var(--raio)); }
+  .titulo { font-size: clamp(31PX, 8.6vw, 40PX); margin-top: 18PX; }
+  .texto { font-size: 16.5PX; }
+  .cabeca__lado { padding-left: 18PX; }
+  .botoes { gap: 10PX; }
+  .botoes > .botao { flex: 1 1 auto; }
+  .botao { min-height: 52PX; padding: 0 22PX; font-size: 16PX; }
+}
+
+/* vírgula e ponto dos títulos: a Plus Jakarta Sans deixa um vão largo antes deles (build.mjs, .pt) */
+.pt { margin-left: -.11em; }

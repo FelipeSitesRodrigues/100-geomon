@@ -1,0 +1,99 @@
+/* ---------------------------------------------------------------- como funciona
+   5 passos em "S" (1 → 2 em cima, 3 ← 4 no meio, 5 embaixo), ligados pela linha dupla da
+   solda. A linha se desenha com a rolagem (--l, 09-processo.js) e cada passo acende quando ela
+   chega nele. No celular, lista vertical com a linha descendo pelas bolas.                  */
+.processo { overflow: hidden; isolation: isolate; }
+.processo__arcos { width: 760px; right: -320px; top: -330px; z-index: -1; }
+.processo__titulo { max-width: 16em; }
+
+.trilha {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: 'p1 p2' 'p4 p3' 'p5 botao';
+  column-gap: 80px;
+  row-gap: 44px;
+  margin-top: 48px;
+}
+.trilha__passos { display: contents; }
+.passo--1 { grid-area: p1; }
+.passo--2 { grid-area: p2; }
+.passo--3 { grid-area: p3; }
+.passo--4 { grid-area: p4; }
+.passo--5 { grid-area: p5; }
+.processo__botao { grid-area: botao; align-self: end; justify-self: start; margin: 0 0 18px 0; }
+
+.trilha__linha { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.trilha__linha path { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.trilha__fundo { stroke: #DCE5DE; stroke-width: 7PX; }
+.trilha__acesa { stroke: var(--verde-escuro); stroke-width: 7PX; stroke-dasharray: 1 1; stroke-dashoffset: calc(1 - var(--l, 0)); }
+.trilha__miolo { stroke: var(--branco); stroke-width: 3PX; }
+
+.passo { position: relative; }
+.passo__num {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  font-size: 24px;
+  font-weight: 800;
+  color: #8FA39A;
+  background: #EEF3EF;
+  box-shadow: inset 0 0 0 1.5px #D3DED6, 0 0 0 6px var(--branco);
+  transition: background-color .6s var(--ease-hover), color .6s var(--ease-hover), box-shadow .6s var(--ease-hover), scale .7s cubic-bezier(.34, 1.4, .64, 1);
+}
+.passo--aceso .passo__num { color: var(--verde); background: var(--verde-escuro); box-shadow: 0 0 0 6px var(--branco), 0 12px 24px -8px rgb(14 74 44 / .5); }
+.passo--atual .passo__num { scale: 1.1; }
+/* passo que a linha ainda não alcançou: a foto fica em preto e branco e o texto um tom abaixo,
+   sempre com contraste de leitura (transparência no texto reprovava o contraste) */
+.passo__corpo { display: grid; grid-template-columns: 196px minmax(0, 1fr); gap: 24px; align-items: center; margin-top: 18px; transform: translate3d(0, 10px, 0); transition: transform .9s var(--ease); }
+.passo--aceso .passo__corpo { transform: none; }
+.passo__midia, .passo picture { width: 196px; aspect-ratio: 16 / 10.5; filter: grayscale(1); transition: filter .9s var(--ease-hover); }
+.passo--aceso :is(.passo__midia, picture) { filter: none; }
+.passo h3 { color: var(--tinta-2); transition: color .6s var(--ease-hover); }
+.passo--aceso h3 { color: var(--tinta); }
+.passo img.passo__midia { width: 100%; height: 100%; object-fit: cover; border-radius: 16px; }
+.passo h3 { font-size: 22px; letter-spacing: -.018em; }
+.passo p { margin-top: 6px; font-size: 15.5px; line-height: 1.5; color: var(--tinta-2); }
+
+/* passo 1: a conversa no WhatsApp desenhada (ilustração, não é print real) */
+.conversa { display: flex; flex-direction: column; gap: 6px; padding: 10px; border-radius: 16px; background: linear-gradient(160deg, #EAF2E6, #DCE9D8); box-shadow: inset 0 0 0 1px #D3DED6; overflow: hidden; font-size: 10.5px; line-height: 1.35; }
+.conversa__topo { display: flex; align-items: center; gap: 8px; margin: -10px -10px 2px; padding: 7px 10px; background: var(--verde-escuro); color: #fff; }
+.conversa__topo b { display: block; font-size: 11.5px; }
+.conversa__topo small { display: block; font-size: 9px; color: #CFE9D9; }
+.conversa__avatar { display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: #fff; color: var(--verde-escuro); font-weight: 800; font-size: 11px; }
+.conversa__balao { max-width: 82%; padding: 6px 9px; border-radius: 10px 10px 10px 3px; background: #fff; color: var(--tinta); box-shadow: 0 1px 1px rgb(0 0 0 / .06); }
+.conversa__balao--eu { align-self: flex-end; border-radius: 10px 10px 3px 10px; background: #D3F5C8; }
+
+@media (prefers-reduced-motion: reduce) {
+  .processo { --l: 1; }
+  .passo__corpo { transform: none; }
+  .passo__midia, .passo picture { filter: none; }
+}
+
+/* ---------------------------------------------------------------- tablet e celular */
+@media (max-width: 63.99em) {
+  .trilha { grid-template-columns: 1fr; grid-template-areas: none; row-gap: 36PX; margin-top: 44PX; padding-left: 0; }
+  .trilha__passos { display: grid; gap: 36PX; position: relative; }
+  .passo--1, .passo--2, .passo--3, .passo--4, .passo--5 { grid-area: auto; }
+  .trilha__linha { display: none; }
+  .passo { display: grid; grid-template-columns: 52PX minmax(0, 1fr); gap: 16PX; align-items: start; }
+  .passo__num { width: 52PX; height: 52PX; font-size: 21PX; }
+  .passo__corpo { margin-top: 0; grid-template-columns: 1fr; gap: 14PX; }
+  .passo__midia, .passo picture { width: 100%; max-width: 360PX; }
+  .trilha__passos::before, .trilha__passos::after { content: ''; position: absolute; left: 23.5PX; top: 26PX; bottom: 30PX; width: 5PX; border-inline: 1.5PX solid #DCE5DE; }
+  .trilha__passos::after { border-color: var(--verde-escuro); transform: scaleY(var(--l, 0)); transform-origin: top; }
+  .processo__botao { grid-area: auto; justify-self: start; margin: 8PX 0 0 68PX; }
+  .conversa { font-size: 13PX; padding: 12PX; gap: 8PX; }
+  .conversa__topo { margin: -12PX -12PX 2PX; padding: 9PX 12PX; }
+  .conversa__topo b { font-size: 14PX; }
+  .conversa__topo small { font-size: 11PX; }
+  .conversa__avatar { width: 28PX; height: 28PX; font-size: 13PX; }
+}
+@media (max-width: 47.99em) {
+  .passo h3 { font-size: 19PX; }
+  .processo__botao { margin-left: 0; }
+}

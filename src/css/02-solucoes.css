@@ -1,0 +1,108 @@
+/* ---------------------------------------------------------------- soluções
+   Seção branca logo depois do hero. Três cartões em pé (4:5): a foto ocupa o cartão inteiro e,
+   embaixo, um vidro escuro (desfoque que cresce pra baixo e escurece) segura o rótulo, o título
+   em caixa alta e o texto. A seta fica num botão de vidro no canto. O cartão inteiro abre o
+   WhatsApp do serviço. No celular e no tablet, os cartões correm de lado.                    */
+.solucoes { overflow: hidden; isolation: isolate; }
+.solucoes__arcos { width: 820px; right: -300px; top: -360px; z-index: -1; }
+@media (min-width: 75em) {
+  .secao.solucoes { padding-top: 80px; }
+  .secao.solucoes:has(+ .secao--sobe) { padding-bottom: calc(80px + var(--raio)); }
+}
+.cartoes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 36px; }
+.cartoes > li { display: flex; }
+.cartao {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--raio-card);
+  overflow: hidden;
+  background: #0E1A17;
+  box-shadow: 0 30px 50px -36px rgb(10 31 28 / .55);
+  isolation: isolate;
+  transition: transform .6s var(--ease), box-shadow .6s var(--ease);
+}
+.cartao__foto { position: absolute; inset: 0; z-index: -2; }
+.cartao__foto picture, .cartao__foto img { width: 100%; height: 100%; object-fit: cover; }
+.cartao__foto img { transition: transform 1.2s var(--ease); }
+/* vidro de baixo: o desfoque entra aos poucos (máscara) e a cor escurece por cima dele */
+.cartao::before, .cartao::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; pointer-events: none; }
+.cartao::before {
+  z-index: -1;
+  top: 48%;
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  -webkit-mask-image: linear-gradient(180deg, transparent, #000 58%);
+  mask-image: linear-gradient(180deg, transparent, #000 58%);
+}
+.cartao::after { z-index: -1; top: 40%; background: linear-gradient(180deg, rgb(8 22 19 / 0), rgb(8 22 19 / .5) 46%, rgb(8 22 19 / .82)); }
+.cartao::after { box-shadow: inset 0 0 0 1px rgb(255 255 255 / .1); }
+
+.cartao__corpo { position: absolute; left: 0; right: 0; bottom: 0; padding: 0 26px 26px; color: #fff; }
+.cartao__rotulo { display: block; font-size: 13px; font-weight: 600; letter-spacing: .01em; color: rgb(255 255 255 / .74); }
+.cartao__rotulo::before { content: ''; display: block; width: 18px; height: 2px; margin-bottom: 10px; border-radius: 2px; background: var(--verde); }
+.cartao__titulo { margin-top: 8px; font-size: 26px; font-weight: 800; line-height: 1.04; letter-spacing: -.01em; text-transform: uppercase; text-wrap: balance; color: #fff; }
+.cartao__texto { display: block; margin-top: 10px; max-width: 26em; font-size: 15px; line-height: 1.5; color: rgb(255 255 255 / .78); }
+.cartao__seta {
+  position: absolute;
+  right: 18px;
+  top: 18px;
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 18px;
+  background: rgb(255 255 255 / .16);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / .4);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  transition: background-color .35s var(--ease-hover), color .35s var(--ease-hover), box-shadow .35s var(--ease-hover), transform .5s var(--ease);
+}
+.cartao:hover { transform: translateY(-6px); box-shadow: 0 40px 60px -36px rgb(10 31 28 / .6); }
+.cartao:hover .cartao__foto img { transform: scale(1.05); }
+.cartao:hover .cartao__seta { background: var(--verde); color: #04241A; box-shadow: none; transform: rotate(-45deg); }
+
+.tambem {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px 30px;
+  margin-top: 20px;
+  padding: 18px 30px;
+  border-radius: 99px;
+  background: var(--claro);
+  box-shadow: inset 0 0 0 1px var(--linha-clara);
+  font-size: 15.5px;
+  font-weight: 600;
+}
+.tambem__rotulo { font-weight: 800; color: var(--verde-forte); padding-right: 28px; border-right: 1px solid rgb(10 31 28 / .16); }
+.tambem a { display: inline-flex; align-items: center; gap: 8px; color: var(--tinta); transition: color .3s var(--ease-hover); }
+.tambem a .i { color: var(--verde-forte); font-size: 16px; transition: transform .4s var(--ease); }
+.tambem a:hover { color: var(--verde-escuro); }
+.tambem a:hover .i { transform: translateX(4px); }
+
+/* tablet e celular: os cartões correm de lado, com o próximo aparecendo na borda. O trilho vai
+   de borda a borda da tela; scroll-padding igual ao padding pra ele não rolar sozinho no load
+   (memória carrossel-scroll-snap-lcp) */
+@media (max-width: 74.99em) {
+  .cartao__corpo { padding: 0 20PX 20PX; }
+  .cartao__titulo { font-size: 22PX; }
+  .cartao__texto { font-size: 14PX; }
+  .tambem { border-radius: 24PX; }
+}
+@media (max-width: 63.99em) {
+  .cartoes { display: flex; gap: 14PX; margin-inline: -20PX; padding: 0 20PX 4PX; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scroll-padding-inline: 20PX; scrollbar-width: none; }
+  .cartoes::-webkit-scrollbar { display: none; }
+  .cartoes > li { flex: 0 0 min(320PX, 80%); scroll-snap-align: start; }
+  /* a entrada em onda sem o scale: o cartão encolhido muda a área de snap e o trilho rolava 14 px */
+  .js .cartoes > [data-revela='grade']:not(.visivel) { transform: translate3d(0, 70px, 0); }
+}
+@media (max-width: 47.99em) {
+  .cartoes { margin-top: 32PX; }
+  .cartao__seta { right: 14PX; top: 14PX; width: 42PX; height: 42PX; }
+  .tambem { flex-direction: column; align-items: flex-start; gap: 14PX; padding: 22PX; }
+  .tambem__rotulo { padding-right: 0; border-right: 0; }
+}

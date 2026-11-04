@@ -1,0 +1,27 @@
+/* ---------------------------------------------------------------- escala
+   A seção preta do site: um brilho verde fraco atrás do título e a galeria de obras (uma
+   grande e duas empilhadas). Os logos dos clientes vêm logo abaixo, em 08-clientes.         */
+.escala { overflow: hidden; isolation: isolate; background: radial-gradient(48% 40% at 12% 0%, rgb(34 120 60 / .34), rgb(34 120 60 / 0) 70%), var(--preto); }
+.escala__arcos { width: 820px; right: -300px; top: -360px; z-index: -1; }
+.escala__titulo { max-width: none; text-wrap: wrap; }
+.sem-quebra { white-space: nowrap; }
+.galeria { display: grid; grid-template-columns: 1.5fr 1fr; grid-template-rows: 1fr 1fr; gap: 18px; height: 480px; margin-top: 44px; }
+.galeria__item { position: relative; border-radius: var(--raio-card); overflow: hidden; box-shadow: inset 0 0 0 1px rgb(255 255 255 / .08); }
+.galeria__item--grande { grid-row: 1 / -1; }
+.galeria__item picture, .galeria__item img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.4s var(--ease); }
+.galeria__item:hover img { transform: scale(1.04); }
+.galeria__item .pilula-vidro { position: absolute; left: 20px; bottom: 20px; }
+
+.escala__link { margin-top: 28px; color: var(--verde); }
+
+@media (max-width: 74.99em) {
+  .galeria { grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; height: auto; }
+  .galeria__item--grande { grid-column: 1 / -1; grid-row: auto; aspect-ratio: 16 / 9; }
+  .galeria__item:not(.galeria__item--grande) { aspect-ratio: 4 / 3; }
+}
+@media (max-width: 47.99em) {
+  .galeria { grid-template-columns: 1fr; gap: 12PX; margin-top: 36PX; }
+  .galeria__item--grande { aspect-ratio: 4 / 3.2; }
+  .galeria__item:not(.galeria__item--grande) { aspect-ratio: 16 / 10; }
+  .galeria__item .pilula-vidro { left: 14PX; bottom: 14PX; font-size: 13.5PX; padding: 8PX 14PX; }
+}

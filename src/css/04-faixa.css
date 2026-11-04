@@ -1,0 +1,27 @@
+/* ---------------------------------------------------------------- faixa azul
+   Entre a lâmina e a CWT, no azul-marinho da logo. Reta, sem canto, e a camada mais alta das
+   seções: cobre o fim da seção clara (a mão do técnico some atrás dela) e o topo arredondado
+   da CWT, que sobe por baixo dela. Os destaques correm em laço só com transform; com
+   movimento reduzido ficam parados.                                                         */
+.faixa { position: relative; z-index: 3; overflow: hidden; margin-top: calc(var(--raio) * -1); padding: 22px 0; background: var(--azul); color: #fff; }
+/* a seção de cima guarda o espaço que a faixa cobre */
+.secao:has(+ .faixa) { padding-bottom: calc(96px + var(--raio)); }
+.faixa__trilho { display: flex; width: max-content; animation: faixa 52s linear infinite; }
+.faixa__grupo { flex: none; display: flex; align-items: center; }
+.faixa__grupo li { display: flex; align-items: center; gap: 12px; font-size: 19px; font-weight: 700; letter-spacing: -.01em; white-space: nowrap; }
+.faixa__grupo li::after { content: ''; width: 6px; height: 6px; margin: 0 30px 0 18px; border-radius: 50%; background: rgb(255 255 255 / .35); }
+.faixa .i { font-size: 26px; color: var(--verde); }
+@keyframes faixa { to { transform: translate3d(-50%, 0, 0); } }
+@media (prefers-reduced-motion: reduce) {
+  .faixa__trilho { animation: none; }
+}
+@media (max-width: 74.99em) {
+  .secao:has(+ .faixa) { padding-bottom: calc(80PX + var(--raio)); }
+}
+@media (max-width: 47.99em) {
+  .secao:has(+ .faixa) { padding-bottom: calc(64PX + var(--raio)); }
+  .faixa { padding: 16PX 0; }
+  .faixa__grupo li { gap: 10PX; font-size: 16PX; }
+  .faixa__grupo li::after { margin: 0 22PX 0 14PX; }
+  .faixa .i { font-size: 22PX; }
+}
