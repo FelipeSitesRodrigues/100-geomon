@@ -137,6 +137,10 @@ await variantes('proc-carreta', `${Q}/processo-carreta.jpg`, [360, 640], { corte
 await variantes('proc-instalacao', `${PF}/WhatsApp Image 2026-09-28 at 19.55.59 (1).jpeg`, [360, 640])
 await variantes('proc-entrega', `${PF}/DJI_20260812113223_0061_D.png`, [360, 640], { corte: [0.3, 0.1, 0.62, 0.74] })
 
+// ---------------------------------------------------------------- nossa história
+// equipe em contraluz no talude, já com luz de fim de tarde: sem o tom dourado por cima
+await variantes('historia', `${PF}/WhatsApp Image 2026-09-28 at 19.56.01 (1).jpeg`, [640, 960, 1280, 1600], { dourado: false })
+
 // ---------------------------------------------------------------- marca
 await gravar(sharp('insumos/logo-branco.png').resize({ width: 480 }).webp({ quality: 92, alphaQuality: 95 }), 'logo-480.webp')
 await gravar(sharp(`${Q}/hero-capa.png`).resize(1200, 630, { fit: 'cover', position: 'right' }).jpeg({ quality: 82, mozjpeg: true }), 'og.jpg')

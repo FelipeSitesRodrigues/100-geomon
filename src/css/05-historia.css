@@ -1,0 +1,76 @@
+/* ---------------------------------------------------------------- nossa história
+   Seção clara entre duas escuras (CWT em cima, diferenciais embaixo), uma ideia só: a equipe.
+   Em cima, título e a frase dos fundadores no lugar do texto da cabeça. Embaixo, a foto grande
+   da equipe em contraluz e, por cima do pé dela, os 6 marcos presos na emenda dupla da solda
+   (duas linhas finas com o canal no meio, o mesmo fio do 04-solda), um ponto de teste por marco.
+   Tablet e celular: os marcos saem de cima da foto e vão pro fundo claro, embaixo dela.      */
+.historia__cabeca { margin-bottom: 52px; }
+.historia__fala { margin: 0; }
+.historia__fala blockquote { margin: 0; }
+.historia__fala p { position: relative; font-size: 21px; font-weight: 600; line-height: 1.45; letter-spacing: -.01em; color: var(--tinta); text-wrap: pretty; }
+.historia__fala p::before { content: '\201C'; position: absolute; left: -.02em; top: -.62em; font-size: 64px; font-weight: 800; line-height: 1; color: var(--verde-forte); }
+.historia__fala blockquote { padding-top: 22px; }
+.historia__fala figcaption { margin-top: 16px; font-size: 15px; color: var(--tinta-2); }
+.historia__fala figcaption strong { color: var(--tinta); font-weight: 700; }
+
+.historia__painel { position: relative; isolation: isolate; height: 540px; border-radius: var(--raio-card); overflow: hidden; background: #2b2a24; }
+.historia__painel picture, .historia__foto { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
+.historia__foto { object-fit: cover; object-position: 50% 30%; }
+/* escurece só o pé da foto, onde ficam os marcos; as pessoas seguem limpas */
+.historia__painel::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgb(4 14 13 / 0) 44%, rgb(4 14 13 / .55) 66%, rgb(4 14 13 / .9) 100%);
+}
+
+.historia__marcos {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  padding: 0 40px 36px;
+  color: #fff;
+}
+.historia__marcos li { position: relative; padding: 30px 24px 0 0; }
+/* a emenda: cada marco desenha o seu trecho e os trechos se encostam numa linha só */
+.historia__marcos li::before { content: ''; position: absolute; left: 0; right: 0; top: 4px; height: 5px; border-block: 1px solid rgb(255 255 255 / .5); }
+.historia__marcos li:last-child::before { right: 0; }
+/* ponto de teste: verde com anel fino */
+.historia__marcos li::after { content: ''; position: absolute; left: 0; top: 0; width: 13px; height: 13px; border-radius: 50%; background: var(--verde); box-shadow: 0 0 0 5px rgb(74 222 110 / .22); }
+.historia__marcos strong { display: block; font-size: 27px; font-weight: 800; line-height: 1.1; letter-spacing: -.025em; white-space: nowrap; }
+.historia__marcos span { display: block; margin-top: 8px; font-size: 14.5px; line-height: 1.45; color: rgb(255 255 255 / .78); text-wrap: pretty; }
+
+/* ---------------------------------------------------------------- tablet: marcos embaixo da foto */
+@media (max-width: 74.99em) {
+  .historia__cabeca { grid-template-columns: minmax(0, 1fr); gap: 28px; align-items: start; margin-bottom: 40PX; }
+  .historia__fala { max-width: 36em; }
+  .historia__painel { height: auto; overflow: visible; border-radius: 0; background: none; }
+  .historia__painel::after { content: none; }
+  .historia__painel picture { position: relative; height: auto; aspect-ratio: 2 / 1; border-radius: var(--raio-card); overflow: hidden; }
+  .historia__foto { position: absolute; }
+  .historia__marcos { position: static; grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 34PX; padding: 34PX 0 0; color: var(--tinta); }
+  .historia__marcos li::before { border-color: rgb(10 31 28 / .26); }
+  .historia__marcos li::after { background: var(--verde-forte); box-shadow: 0 0 0 5px rgb(30 158 69 / .16); }
+  .historia__marcos span { color: var(--tinta-2); }
+}
+
+/* ---------------------------------------------------------------- celular: a emenda desce */
+@media (max-width: 47.99em) {
+  .historia__fala p { font-size: 18.5PX; }
+  .historia__fala p::before { font-size: 54PX; }
+  .historia__painel picture { aspect-ratio: 4 / 3; }
+  .historia__marcos { grid-template-columns: minmax(0, 1fr); row-gap: 0; padding-top: 26PX; }
+  .historia__marcos li { padding: 0 0 22PX 34PX; }
+  .historia__marcos li:last-child { padding-bottom: 0; }
+  .historia__marcos li::before { left: 4PX; right: auto; top: 6PX; bottom: -6PX; width: 5PX; height: auto; border-block: 0; border-inline: 1px solid rgb(10 31 28 / .26); }
+  .historia__marcos li:last-child::before { content: none; }
+  .historia__marcos li::after { top: 3PX; }
+  .historia__marcos strong { font-size: 22PX; }
+  .historia__marcos span { margin-top: 4PX; font-size: 15PX; }
+}
