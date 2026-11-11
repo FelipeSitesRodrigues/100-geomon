@@ -17,9 +17,14 @@
 
 .rodape__solda { position: relative; height: 5px; margin: 56px 0 26px; border-block: 1px solid rgb(255 255 255 / .22); }
 .rodape__solda i { position: absolute; left: 50%; top: 50%; width: 12px; height: 12px; margin: -6px 0 0 -6px; border-radius: 50%; background: var(--verde); box-shadow: 0 0 0 5px #003430; }
-.rodape__base { display: flex; justify-content: space-between; gap: 16px; font-size: 14.5px; color: rgb(255 255 255 / .7); }
+.rodape__base { display: flex; align-items: center; justify-content: space-between; gap: 16px; font-size: 14.5px; color: rgb(255 255 255 / .7); }
 .rodape__base a { color: #fff; text-decoration: underline; text-decoration-color: rgb(74 222 110 / .6); text-underline-offset: 4px; }
 .rodape__base a:hover { color: var(--verde); }
+/* crédito: "Site por" + a logo da ProRec (branca e vermelha), sem o sublinhado do link de texto */
+.rodape__credito { display: flex; align-items: center; gap: 12px; }
+.rodape__credito a { display: block; text-decoration: none; transition: opacity .3s var(--ease-hover); }
+.rodape__credito a:hover { opacity: .8; }
+.rodape__credito img { display: block; width: 124px; height: auto; }
 
 @media (max-width: 74.99em) {
   .rodape__grade { grid-template-columns: 1fr 1fr; row-gap: 40PX; }
@@ -30,7 +35,7 @@
   .rodape__grade { grid-template-columns: 1fr; gap: 32PX; }
   .rodape__grade > * + * { padding-left: 0; border-left: 0; }
   .rodape__marca img { width: 170PX; }
-  .rodape__base { flex-direction: column; gap: 6PX; }
+  .rodape__base { flex-direction: column; align-items: flex-start; gap: 10PX; }
   /* espaço pro botão flutuante do WhatsApp não cobrir o crédito */
   .rodape__base { padding-bottom: 64PX; }
 }

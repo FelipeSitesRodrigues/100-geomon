@@ -79,36 +79,6 @@
   "h": 1066,
   "kb": 36
  },
- "solucao-reservatorio-480.avif": {
-  "w": 480,
-  "h": 600,
-  "kb": 16
- },
- "solucao-reservatorio-480.webp": {
-  "w": 480,
-  "h": 600,
-  "kb": 23
- },
- "solucao-reservatorio-640.avif": {
-  "w": 640,
-  "h": 800,
-  "kb": 28
- },
- "solucao-reservatorio-640.webp": {
-  "w": 640,
-  "h": 800,
-  "kb": 39
- },
- "solucao-reservatorio-880.avif": {
-  "w": 880,
-  "h": 1100,
-  "kb": 52
- },
- "solucao-reservatorio-880.webp": {
-  "w": 880,
-  "h": 1100,
-  "kb": 70
- },
  "solucao-canal-480.avif": {
   "w": 480,
   "h": 600,
@@ -138,26 +108,6 @@
   "w": 880,
   "h": 1100,
   "kb": 95
- },
- "solucao-tanque-480.avif": {
-  "w": 480,
-  "h": 600,
-  "kb": 30
- },
- "solucao-tanque-480.webp": {
-  "w": 480,
-  "h": 600,
-  "kb": 53
- },
- "solucao-tanque-640.avif": {
-  "w": 640,
-  "h": 800,
-  "kb": 46
- },
- "solucao-tanque-640.webp": {
-  "w": 640,
-  "h": 800,
-  "kb": 80
  },
  "lamina-recorte-640.avif": {
   "w": 640,
@@ -678,5 +628,120 @@
   "w": 1600,
   "h": 1066,
   "kb": 54
+ },
+ "solucao-redondo-480.avif": {
+  "w": 480,
+  "h": 600,
+  "kb": 13
+ },
+ "solucao-redondo-480.webp": {
+  "w": 480,
+  "h": 600,
+  "kb": 21
+ },
+ "solucao-redondo-640.avif": {
+  "w": 640,
+  "h": 800,
+  "kb": 24
+ },
+ "solucao-redondo-640.webp": {
+  "w": 640,
+  "h": 800,
+  "kb": 38
+ },
+ "solucao-redondo-880.avif": {
+  "w": 880,
+  "h": 1100,
+  "kb": 48
+ },
+ "solucao-redondo-880.webp": {
+  "w": 880,
+  "h": 1100,
+  "kb": 77
+ },
+ "solucao-retangular-480.avif": {
+  "w": 480,
+  "h": 600,
+  "kb": 15
+ },
+ "solucao-retangular-480.webp": {
+  "w": 480,
+  "h": 600,
+  "kb": 21
+ },
+ "solucao-retangular-640.avif": {
+  "w": 640,
+  "h": 800,
+  "kb": 23
+ },
+ "solucao-retangular-640.webp": {
+  "w": 640,
+  "h": 800,
+  "kb": 33
+ },
+ "solucao-canal-agua-480.avif": {
+  "w": 480,
+  "h": 600,
+  "kb": 19
+ },
+ "solucao-canal-agua-480.webp": {
+  "w": 480,
+  "h": 600,
+  "kb": 41
+ },
+ "solucao-canal-agua-640.avif": {
+  "w": 640,
+  "h": 800,
+  "kb": 36
+ },
+ "solucao-canal-agua-640.webp": {
+  "w": 640,
+  "h": 800,
+  "kb": 76
+ },
+ "solucao-canal-agua-880.avif": {
+  "w": 880,
+  "h": 1100,
+  "kb": 72
+ },
+ "solucao-canal-agua-880.webp": {
+  "w": 880,
+  "h": 1100,
+  "kb": 144
+ },
+ "solucao-tanque-peixe-480.avif": {
+  "w": 480,
+  "h": 600,
+  "kb": 22
+ },
+ "solucao-tanque-peixe-480.webp": {
+  "w": 480,
+  "h": 600,
+  "kb": 43
+ },
+ "solucao-tanque-peixe-640.avif": {
+  "w": 640,
+  "h": 800,
+  "kb": 38
+ },
+ "solucao-tanque-peixe-640.webp": {
+  "w": 640,
+  "h": 800,
+  "kb": 74
+ },
+ "solucao-tanque-peixe-880.avif": {
+  "w": 880,
+  "h": 1100,
+  "kb": 63
+ },
+ "solucao-tanque-peixe-880.webp": {
+  "w": 880,
+  "h": 1100,
+  "kb": 123
+ },
+ "logo-prorec-360.webp": {
+  "w": 360,
+  "h": 127,
+  "kb": 16
  }
 }

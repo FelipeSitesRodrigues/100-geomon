@@ -86,9 +86,17 @@ await variantes('equipe-recorte', 'insumos/equipe-recorte-topo.png', [800, 1200,
 
 // ---------------------------------------------------------------- soluções
 // cartões em pé (4:5): a foto ocupa o cartão inteiro e o texto fica no vidro escuro de baixo
-await variantes('solucao-reservatorio', `${Q}/solucao-reservatorio.jpg`, [480, 640, 880], { corte: [0.27, 0, 0.45, 1] })
+// Pedido do Wilton (vídeo de 2026-11-10): as fotos dos cartões trocam sozinhas (02-solucoes.js).
+// Reservatório: o retangular novo e o redondo recente. Canal: a foto real do canal vazio parecia
+// estrada e voltou do ChatGPT com água dentro da manta (mesma curva, anexo 4), seguida da foto do
+// canal em obra. Tanque: cena criada no ChatGPT a partir de uma referência que o Felipe mandou
+// (anexo 6), no lugar do tanque montado no galpão.
+const AS = '../0100 - Geomon/anexo ChatGPT - solucoes'
+await variantes('solucao-retangular', `${AS}/1 - reservatorio retangular (vai direto, sem IA).png`, [480, 640], { corte: [0.225, 0, 0.485, 1], dourado: false })
+await variantes('solucao-redondo', `${PF}/DJI_20260812113223_0061_D.png`, [480, 640, 880], { corte: [0.285, 0, 0.45, 1] })
+await variantes('solucao-canal-agua', `${AS}/4 - resultado ChatGPT canal.png`, [480, 640, 880], { dourado: false })
 await variantes('solucao-canal', `${M}/DJI_0434.JPG`, [480, 640, 880], { corte: [0.3, 0, 0.45, 1] })
-await variantes('solucao-tanque', `${PF}/Tanque de Peixe.png`, [480, 640, 880], { corte: [0.32, 0, 0.6, 1] })
+await variantes('solucao-tanque-peixe', `${AS}/6 - resultado ChatGPT tanque com peixe.png`, [480, 640, 880], { dourado: false })
 
 // ---------------------------------------------------------------- a prova está na solda
 // a foto da lâmina do PDF era mole e com véu branco: a mesma foto foi restaurada no ChatGPT
@@ -142,7 +150,9 @@ await variantes('proc-entrega', `${PF}/DJI_20260812113223_0061_D.png`, [360, 640
 await variantes('historia', `${PF}/WhatsApp Image 2026-09-28 at 19.56.01 (1).jpeg`, [640, 960, 1280, 1600], { dourado: false })
 
 // ---------------------------------------------------------------- marca
+// crédito do rodapé: logo da ProRec em branco e vermelho (node scripts/logo-prorec.mjs)
 await gravar(sharp('insumos/logo-branco.png').resize({ width: 480 }).webp({ quality: 92, alphaQuality: 95 }), 'logo-480.webp')
+await gravar(sharp('insumos/logo-prorec-branco.png').resize({ width: 360 }).webp({ quality: 90, alphaQuality: 95 }), 'logo-prorec-360.webp')
 await gravar(sharp(`${Q}/hero-capa.png`).resize(1200, 630, { fit: 'cover', position: 'right' }).jpeg({ quality: 82, mozjpeg: true }), 'og.jpg')
 
 writeFileSync(path.join(OUT, 'manifesto.json'), JSON.stringify(manifesto, null, 1))

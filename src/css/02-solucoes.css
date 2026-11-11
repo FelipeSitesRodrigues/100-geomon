@@ -26,6 +26,11 @@
 .cartao__foto { position: absolute; inset: 0; z-index: -2; }
 .cartao__foto picture, .cartao__foto img { width: 100%; height: 100%; object-fit: cover; }
 .cartao__foto img { transition: transform 1.2s var(--ease); }
+/* fotos que trocam sozinhas (02-solucoes.js): empilhadas, só a .ativa aparece, troca por opacidade */
+[data-troca] picture { position: absolute; inset: 0; }
+.js [data-troca] picture { opacity: 0; transition: opacity 1.4s var(--ease); }
+.js [data-troca] picture.ativa, .js [data-troca]:not(:has(.ativa)) picture:first-child { opacity: 1; }
+@media (prefers-reduced-motion: reduce) { .js [data-troca] picture { transition: none; } }
 /* vidro de baixo: o desfoque entra aos poucos (máscara) e a cor escurece por cima dele */
 .cartao::before, .cartao::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; pointer-events: none; }
 .cartao::before {
