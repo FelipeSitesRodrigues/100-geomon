@@ -152,7 +152,7 @@ await variantes('historia', `${PF}/WhatsApp Image 2026-09-28 at 19.56.01 (1).jpe
 // ---------------------------------------------------------------- marca
 // crédito do rodapé: logo da ProRec em branco e vermelho (node scripts/logo-prorec.mjs)
 await gravar(sharp('insumos/logo-branco.png').resize({ width: 480 }).webp({ quality: 92, alphaQuality: 95 }), 'logo-480.webp')
-await gravar(sharp('insumos/logo-prorec-branco.png').resize({ width: 360 }).webp({ quality: 90, alphaQuality: 95 }), 'logo-prorec-360.webp')
+await gravar(sharp('insumos/logo-prorec-branco.png').resize({ width: 360 }).webp({ quality: 90, alphaQuality: 95 }), 'logo-prorec-v2-360.webp')
 await gravar(sharp(`${Q}/hero-capa.png`).resize(1200, 630, { fit: 'cover', position: 'right' }).jpeg({ quality: 82, mozjpeg: true }), 'og.jpg')
 
 writeFileSync(path.join(OUT, 'manifesto.json'), JSON.stringify(manifesto, null, 1))
