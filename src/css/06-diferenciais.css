@@ -3,7 +3,7 @@
    fundo é a maleta verde desfocada de ponta a ponta (16:9), escura à direita; o medidor
    recortado à esquerda, com a mão saindo pela borda da tela e a anotação com o fio até o visor;
    à direita o texto com os 6 diferenciais em duas colunas, ponto verde e fio embaixo. O medidor
-   entra deslizando da esquerda e o visor conta até 0.97.                                    */
+   entra deslizando da esquerda e o visor conta até 1.00.                                    */
 .diferenciais { --sangra: max(20PX, (100vw - var(--largura)) / 2); overflow: hidden; isolation: isolate; background: #071311; }
 .secao.diferenciais { padding-top: 64px; }
 .secao.diferenciais:has(+ .secao--sobe) { padding-bottom: calc(64px + var(--raio)); }

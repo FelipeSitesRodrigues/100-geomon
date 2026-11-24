@@ -19,6 +19,8 @@ import path from 'node:path'
 const M = '../0100 - Geomon/MATERIAL'
 const PF = `${M}/Portifólio Geomon`
 const A = '../0100 - Geomon/anexo ChatGPT'
+// ajustes pedidos pelo Wilton em 2026-11-23 (pano da cabeça, logo na soldadora, campo da carreta)
+const AW = '../0100 - Geomon/anexo ChatGPT - ajustes wilton'
 const Q = 'insumos/quadros'
 const OUT = 'src/assets/img'
 mkdirSync(OUT, { recursive: true })
@@ -113,7 +115,7 @@ await variantes('passo-tensiometro', `${A}/13 - quadro tensiometro.jpg`, [320, 5
 // CWT: o quadro real do técnico soldando (vídeo em pé, 15 no anexo) estendido pros lados no
 // ChatGPT, com a luz de fim de tarde e o lado esquerdo escuro pro texto (2026-11-02, conferido
 // com o quadro: mesmo técnico, mesma pose, mesma soldadora 124). Fundo da seção inteira.
-await variantes('cwt-fundo', `${A}/18 - resultado ChatGPT fundo CWT.png`, [768, 1152, 1536], { dourado: false })
+await variantes('cwt-fundo', `${AW}/4 - resultado ChatGPT fundo CWT sem pano com logo.png`, [768, 1152, 1536], { dourado: false })
 // selo CWT em 3D: o selo real (4 no anexo) refeito como medalha no ChatGPT, textos conferidos letra
 // por letra (19 no anexo, já veio transparente; insumos/selo-cwt-3d.png é ele sem a sobra)
 await variantes('selo-cwt', 'insumos/selo-cwt-3d.png', [240, 480], { dourado: false, alfa: true })
@@ -126,7 +128,7 @@ await variantes('dif-fundo', `${A}/21 - resultado ChatGPT fundo diferenciais 16x
 await variantes('medidor-recorte', `${A}/22 - resultado ChatGPT medidor mao esquerda.png`, [560, 900, 1200], { dourado: false, alfa: true, corte: [0, 50 / 1254, 1200 / 1254, 1204 / 1254] })
 
 // ---------------------------------------------------------------- alojamento
-await variantes('alojamento', `${Q}/alojamento.jpg`, [960, 1600, 2240], { corte: [0.02, 0.12, 0.96, 0.78] })
+await variantes('alojamento', `${AW}/5 - resultado ChatGPT alojamento limpo.png`, [960, 1600], { corte: [0.02, 0.12, 0.96, 0.78] })
 await variantes('alojamento-cima', `${Q}/alojamento-cima.jpg`, [400, 640], { corte: [0.2, 0.22, 0.6, 0.62] })
 
 // ---------------------------------------------------------------- escala (galeria) e clientes
@@ -140,7 +142,7 @@ for (const n of ['inpasa', 'slc', 'franciosi', 'gees', 'horizonte', 'hs']) {
 }
 
 // ---------------------------------------------------------------- como funciona
-await variantes('proc-visita', `${PF}/WhatsApp Image 2026-09-28 at 19.56.00 (2).jpeg`, [360, 640], { corte: [0.16, 0.06, 0.74, 0.94] })
+await variantes('proc-visita', `${Q}/processo-visita.jpg`, [360, 640], { corte: [0.1, 0, 0.8, 0.8] })
 await variantes('proc-carreta', `${Q}/processo-carreta.jpg`, [360, 640], { corte: [0.1, 0.22, 0.62, 0.6] })
 await variantes('proc-instalacao', `${PF}/WhatsApp Image 2026-09-28 at 19.55.59 (1).jpeg`, [360, 640])
 await variantes('proc-entrega', `${PF}/DJI_20260812113223_0061_D.png`, [360, 640], { corte: [0.3, 0.1, 0.62, 0.74] })

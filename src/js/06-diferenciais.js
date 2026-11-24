@@ -1,5 +1,5 @@
-// Visor do medidor: conta de 0.00 até a espessura medida (0.97 mm) quando o medidor aparece,
-// como um micrômetro de verdade fechando na manta (pedido do Wilton). O HTML já traz 0.97:
+// Visor do medidor: conta de 0.00 até a espessura medida (1.00 mm) quando o medidor aparece,
+// como um micrômetro de verdade fechando na manta (pedido do Wilton). O HTML já traz 1.00:
 // sem JS ou com movimento reduzido o número está lá.
 ;(() => {
   const valor = document.querySelector('.visor__valor')
